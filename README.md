@@ -56,7 +56,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
-| &#9744; | `char.craftsman.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
+| &#9744; | `char.craftsman.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | canvas ready, empty |
 | &#9744; | `char.player.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9744; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `prop1x1.chest.iron.locked` | **16&times;16** | 1 | 20 | **yes** | not started |
@@ -129,7 +129,62 @@ git tag assets-v1 && git push --tags   # publishes a Release the game fetches
 ## What to draw it in
 
 <!-- TOOLS:START -->
-Being researched. Short version: **Aseprite** is the industry standard for pixel art, it is inexpensive, and it runs natively on macOS. This section will be replaced with verified prices, free alternatives, and a beginner learning path.
+### Buy Aseprite. $19.99.
+
+It is the standard for pixel art, it runs natively on Apple Silicon, and it is the only editor whose PNG writer we verified line by line against its source. [aseprite.org](https://www.aseprite.org/)
+
+The trial cannot save, so it only shows you the interface. It is also source-available, and compiling it yourself is permitted for your own use.
+
+Read **[ASEPRITE.md](ASEPRITE.md)** before your first sprite. Three settings, once, and you will never see a format error.
+
+### Free alternative: Pixelorama
+
+[Pixelorama](https://orama-interactive.itch.io/pixelorama) is free, MIT licensed, actively developed, and has tilemap layers and autotiling. **It passes our validator.** Its exports always carry an `sRGB` marker chunk and never an `iCCP` profile, and we only reject `iCCP`, so this is a non-issue. Worth installing alongside Aseprite regardless.
+
+### Do not bother
+
+| | why |
+|---|---|
+| **Pyxel Edit** | Great tiling reputation, but the last release was 0.4.95 in **January 2022** and it runs on Adobe AIR. |
+| **Procreate** | Requires a colour profile on every canvas, chosen at creation, with no "none" option and no way to change it later. |
+| **Photoshop, Krita** | Painting applications. Anti-aliasing is the default on nearly every tool, which is the one thing our standard forbids. |
+| **Pixelmash** | Its entire premise is downsampling high-resolution art, which generates blended edge pixels by design. |
+| **LibreSprite** | The Aseprite fork. Latest stable is v1.1 from **2023**; v1.2 is a prerelease development build. |
+
+### The pro move on colour mode
+
+Draw in **Indexed** colour mode, then switch to **Sprite &rarr; Color Mode &rarr; RGB** just before exporting.
+
+Indexed mode stores one palette slot per pixel, so a half-transparent pixel is *structurally impossible*. It makes the anti-aliasing rule enforce itself while you work. But an Indexed sprite exports as a palette PNG, which we reject, so the conversion before export is not optional.
+
+If that feels like one step too many to remember, just work in RGB. It is the safe default and `npm run watch` will catch you.
+
+### Learning to actually draw this
+
+You are not missing talent, you are missing about four specific techniques.
+
+| | |
+|---|---|
+| **[Pixel Logic](https://knowledgebook.itch.io/pixel-logic-a-guide-to-pixel-art)** | 242 pages, "$2.99 or more" on itch. The same book is $10 on the author's Gumroad. Start here. |
+| **[Slynyrd's Pixelblog](https://www.slynyrd.com/pixelblog-archive)** | Free, and the best writing on pixel art anywhere. Start with the palette posts. |
+| **[Miniboss tutorials](https://blog.studiominiboss.com/pixelart)** | Free, plus a $5 bundle. Short and practical. |
+
+**The single highest-leverage thing: palette discipline.** Most of what reads as "professional" is colour choice, not draughtsmanship, which is exactly why every slot here has a colour cap of 8 to 24. Treat the cap as the design tool, not the restriction.
+
+The four techniques worth learning first, in order:
+
+1. **Hue shifting.** Shadows shift toward blue or purple and get darker; highlights shift toward yellow and get lighter. Never just add black. This one change does more than everything else combined.
+2. **Readable silhouette.** Fill the sprite solid black. If you cannot tell what it is, no amount of interior detail will save it.
+3. **No jaggies.** Keep pixel runs in a consistent progression along a curve, 4-3-2-1 rather than 3-1-4-2. Broken runs read as noise.
+4. **One light direction.** Upper left, every asset, no exceptions.
+
+### One licence warning, and it is serious
+
+**Mana Seed** asset packs are excellent and widely recommended for exactly this genre. Their [licence](https://selieltheshaper.weebly.com/user-license.html) states the artist does not consent to their work being used *"in any machine learning datasets, nor used in a project alongside 'AI' generated imagery, **writing, code, or anything else**."*
+
+This project is built with an AI coding assistant. As written, that clause plausibly bars the purchase outright, and it is not limited to AI art. **Do not buy Mana Seed for this project without reading that licence yourself.**
+
+Kenney (CC0), Sprout Lands premium, and LimeZu carry no such clause.
 <!-- TOOLS:END -->
 
 ---

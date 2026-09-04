@@ -14,17 +14,19 @@ If you already have one: **Layer menu &rarr; Background &rarr; Convert to Layer.
 
 When making a new sprite, set Background to **Transparent**.
 
-### 2. Stay in RGB colour mode
+### 2. Export in RGB colour mode
 
-**Sprite menu &rarr; Color Mode &rarr; RGB Color.**
+**Sprite menu &rarr; Color Mode &rarr; RGB Color** before you export. An Indexed sprite exports as a palette PNG, which we reject.
 
-Indexed mode exports an indexed PNG, which we reject. Indexed *feels* right for pixel art with a small palette, but the palette limit is enforced by counting colours in the file, so you get the discipline without the format problem. Work in RGB and use a palette swatch set instead.
+**Drawing** in Indexed is actually the better habit, though. Indexed stores one palette slot per pixel, so a half-transparent pixel cannot be represented at all, which makes the no-anti-aliasing rule enforce itself while you work. Draw in Indexed, convert to RGB, export.
 
-### 3. Leave the colour profile as sRGB
+If remembering the conversion feels like one step too many, just work in RGB the whole time. `npm run watch` will catch anything.
 
-**Sprite menu &rarr; Properties &rarr; Color Profile &rarr; sRGB.**
+### 3. Colour profile: the default is already fine
 
-An embedded profile silently shifts your colours between Aseprite and the game. Default Aseprite is fine here; this only bites if you have imported something.
+Aseprite writes a one-byte `sRGB` marker, not an embedded ICC profile. **We only reject `iCCP`**, a real multi-kilobyte profile block, so you have nothing to change.
+
+It only bites if you import art carrying a profile. If that ever happens, **Edit &rarr; Preferences &rarr; Color** and untick **Color Management**, which stops Aseprite writing any colour chunk at all. Verified in its source: the profile writer sits behind `if (fop->preserveColorProfile() && spec.colorSpace())`, and that preference is the only thing feeding it.
 
 ## Drawing settings
 
@@ -73,9 +75,13 @@ Each of these breaks a fixed canvas or a fixed grid:
 
 ## Buying it
 
-Aseprite is source-available. Compiling it yourself is permitted for your own use, and it is the same binary. The paid build is a convenience, not a different program. Check the current price and licence terms on the official site before buying.
+**$19.99** on Steam or from [aseprite.org](https://www.aseprite.org/), verified 2026-09-04. Current version 1.3.18.3.
 
-The trial cannot save files at all, so it is only useful to see whether you like the interface.
+It is source-available, and compiling it yourself is permitted for your own use. Same binary either way.
+
+The trial cannot save files at all, so it only shows you the interface.
+
+Note that itch.io and Steam are currently shipping **different versions**, so prefer Steam or the official site.
 
 ## Alternatives
 
