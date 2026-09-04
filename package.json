@@ -13,6 +13,8 @@
     "sheet": "node scripts/sheet.mjs && open sheet.html",
     "placeholders": "node scripts/placeholders.mjs",
     "manifest": "node scripts/build-manifest.mjs --with-placeholders",
-    "test": "node scripts/selftest.mjs"
+    "test": "node scripts/selftest.mjs",
+    "status": "node scripts/readme-status.mjs",
+    "issues": "node scripts/make-issues.mjs"
   }
 }

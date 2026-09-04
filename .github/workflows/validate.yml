@@ -56,6 +56,10 @@ jobs:
       - name: manifest builds cleanly
         run: node scripts/build-manifest.mjs --strict > /dev/null
 
+      # The README promises a state of the world. Keep it true.
+      - name: readme status table is current
+        run: node scripts/readme-status.mjs --check
+
   # A path-filtered job registered as a required check sits Pending forever and
   # blocks merges. This fixed-name job always runs, so it is safe to require.
   gate:
