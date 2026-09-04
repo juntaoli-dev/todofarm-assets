@@ -58,7 +58,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 |---|---|---|---|---|---|---|
 | &#9744; | `char.craftsman.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | canvas ready, empty |
 | &#9744; | `char.player.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
-| &#9744; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9744; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | canvas ready, empty |
 | &#9744; | `prop1x1.chest.iron.locked` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop1x1.chest.wooden.closed` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop1x1.chest.wooden.open` | **16&times;16** | 1 | 20 | **yes** | not started |
@@ -158,6 +158,35 @@ Draw in **Indexed** colour mode, then switch to **Sprite &rarr; Color Mode &rarr
 Indexed mode stores one palette slot per pixel, so a half-transparent pixel is *structurally impossible*. It makes the anti-aliasing rule enforce itself while you work. But an Indexed sprite exports as a palette PNG, which we reject, so the conversion before export is not optional.
 
 If that feels like one step too many to remember, just work in RGB. It is the safe default and `npm run watch` will catch you.
+
+### The palette
+
+**[Resurrect 64](https://lospec.com/palette-list/resurrect-64)** by **Kerrie Lake**. 64 colours, and the whole game is drawn from it.
+
+The files are in [`palette/`](palette/) so you do not have to go and find them:
+
+| file | for |
+|---|---|
+| `resurrect-64.gpl` | **Aseprite**, GIMP. This is the one you want. |
+| `resurrect-64.ase` | Photoshop |
+| `resurrect-64.pal` | JASC, most other editors |
+| `resurrect-64.hex` | plain text, and what the validator reads |
+| `resurrect-64.png` | the swatches as an image |
+
+**Load it in Aseprite:** the palette panel menu (the small icon above the swatches) &rarr; **Load Palette** &rarr; pick `palette/resurrect-64.gpl`. Then only pick colours from that row and you cannot go wrong.
+
+**How this fits the colour caps.** 64 is the *master* set for the whole game. The per-slot cap of 8 to 24 is how many of those 64 a *single sprite* may use. So a coin might use 6, a character 20, and they still look like the same game because every one of those colours came from the same 64.
+
+This is the single biggest lever you have as a beginner. A limited palette chosen by someone with a good eye does more for how professional your art looks than years of drawing practice, and Kerrie Lake has already done that part for you.
+
+**The validator warns, it does not block.** Straying off palette is a judgement call, so an off-palette colour is reported rather than rejected:
+
+```
+PASS  icon.coin   2/12 colours   1 advisory
+      ! On the master palette   2 off-palette: #0cc8b4 #ff7803
+```
+
+**Licence:** Lospec publishes no formal licence for it. Asked directly on the palette page whether it could be used in a commercial game, Kerrie Lake replied "Absolutely!". That is the author's own word rather than a licence document, so credit her in the game credits.
 
 ### Learning to actually draw this
 

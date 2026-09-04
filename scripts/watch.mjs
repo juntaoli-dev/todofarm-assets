@@ -12,8 +12,11 @@
 import { readFileSync, readdirSync, existsSync, watch, statSync } from 'fs';
 import { basename } from 'path';
 import { validate, canvasOf, isUntouched } from '../lib/validate.mjs';
+import { loadPalette } from '../lib/validate.mjs';
 
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
+const MASTER = existsSync('palette/resurrect-64.hex')
+  ? loadPalette(readFileSync('palette/resurrect-64.hex', 'utf8')) : null;
 const B = s => `\x1b[1m${s}\x1b[0m`, D = s => `\x1b[2m${s}\x1b[0m`;
 const G = s => `\x1b[32m${s}\x1b[0m`, R = s => `\x1b[31m${s}\x1b[0m`, Y = s => `\x1b[33m${s}\x1b[0m`;
 const time = () => D(new Date().toTimeString().slice(0, 8));
@@ -43,7 +46,7 @@ async function check(file) {
   const bytes = await settled(file);
   if (!bytes) return;
 
-  const r = await validate(new Uint8Array(bytes), { ...cls, id });
+  const r = await validate(new Uint8Array(bytes), { ...cls, id, masterPalette: MASTER });
   if (r.ok) {
     const warn = r.warnings.length ? Y(`  ${r.warnings.length} advisory`) : '';
     const cols = r.palette ? D(`  ${r.palette.length}/${cls.colors} colours`) : '';

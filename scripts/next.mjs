@@ -4,8 +4,11 @@
  */
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { validate, canvasOf, isUntouched } from '../lib/validate.mjs';
+import { loadPalette } from '../lib/validate.mjs';
 
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
+const MASTER = existsSync('palette/resurrect-64.hex')
+  ? loadPalette(readFileSync('palette/resurrect-64.hex', 'utf8')) : null;
 const want = Number(process.argv[2]) || 3;
 const B = s => `\x1b[1m${s}\x1b[0m`, D = s => `\x1b[2m${s}\x1b[0m`;
 const G = s => `\x1b[32m${s}\x1b[0m`, R = s => `\x1b[31m${s}\x1b[0m`, Y = s => `\x1b[33m${s}\x1b[0m`;
@@ -17,7 +20,7 @@ const state = [];
 for (const s of slots) {
   const file = `art/${s.id}@1x.png`;
   if (!existsSync(file)) { state.push({ s, st: 'todo' }); continue; }
-  const r = await validate(new Uint8Array(readFileSync(file)), { ...classes[s.class], id: s.id });
+  const r = await validate(new Uint8Array(readFileSync(file)), { ...classes[s.class], id: s.id, masterPalette: MASTER });
   if (r.ok) state.push({ s, st: 'done' });
   else if (isUntouched(r)) state.push({ s, st: 'started' });
   else state.push({ s, st: 'broken', why: r.blocking.map(c => `${c.label}: ${c.value}`) });

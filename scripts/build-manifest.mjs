@@ -5,8 +5,11 @@
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from 'fs';
 import { validate, canvasOf, isUntouched } from '../lib/validate.mjs';
+import { loadPalette } from '../lib/validate.mjs';
 
 const { classes, standard, tile } = JSON.parse(readFileSync('classes.json', 'utf8'));
+const MASTER = existsSync('palette/resurrect-64.hex')
+  ? loadPalette(readFileSync('palette/resurrect-64.hex', 'utf8')) : null;
 const check = process.argv.includes('--check');
 // Placeholders let the game build before any art exists. They are flagged in
 // the manifest so the game, and you, can always tell what is real.
@@ -28,7 +31,7 @@ for (const s of slots) {
 
   // Placeholders deliberately break the magenta rule, so they are not validated.
   if (!isPlaceholder) {
-    const r = await validate(new Uint8Array(readFileSync(file)), { ...cls, id: s.id });
+    const r = await validate(new Uint8Array(readFileSync(file)), { ...cls, id: s.id, masterPalette: MASTER });
     if (!r.ok) {
       if (!isUntouched(r)) broken.push(`${s.id}: ${r.blocking.map(c => c.label).join(', ')}`);
       missing.push(s); continue;

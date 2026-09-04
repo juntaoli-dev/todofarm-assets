@@ -6,8 +6,11 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { basename } from 'path';
 import { validate, summarise } from '../lib/validate.mjs';
+import { loadPalette } from '../lib/validate.mjs';
 
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
+const MASTER = existsSync('palette/resurrect-64.hex')
+  ? loadPalette(readFileSync('palette/resurrect-64.hex', 'utf8')) : null;
 const files = process.argv.slice(2).length
   ? process.argv.slice(2).filter(f => f.endsWith('.png'))
   : readdirSync('art').filter(f => f.endsWith('.png')).map(f => `art/${f}`);
@@ -26,7 +29,7 @@ for (const file of files) {
   const cls = classes[slot.class];
   if (!cls) { console.log(`FAIL  ${file}\n        - unknown class "${slot.class}"`); bad++; continue; }
 
-  const r = await validate(new Uint8Array(readFileSync(file)), { ...cls, id });
+  const r = await validate(new Uint8Array(readFileSync(file)), { ...cls, id, masterPalette: MASTER });
   console.log(summarise(r, file));
   if (!r.ok) bad++;
 }

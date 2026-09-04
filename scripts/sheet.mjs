@@ -7,8 +7,11 @@
  */
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { validate, canvasOf, isUntouched } from '../lib/validate.mjs';
+import { loadPalette } from '../lib/validate.mjs';
 
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
+const MASTER = existsSync('palette/resurrect-64.hex')
+  ? loadPalette(readFileSync('palette/resurrect-64.hex', 'utf8')) : null;
 const slots = readdirSync('slots').filter(f => f.endsWith('.json'))
   .map(f => JSON.parse(readFileSync(`slots/${f}`, 'utf8')))
   .sort((a, b) => a.class.localeCompare(b.class) || a.id.localeCompare(b.id));
@@ -20,7 +23,7 @@ for (const s of slots) {
   const file = existsSync(real) ? real : existsSync(ph) ? ph : null;
   let state = 'missing', note = 'not started';
   if (existsSync(real)) {
-    const r = await validate(new Uint8Array(readFileSync(real)), { ...cls, id: s.id });
+    const r = await validate(new Uint8Array(readFileSync(real)), { ...cls, id: s.id, masterPalette: MASTER });
     if (r.ok) { state = 'ok'; note = `${r.palette.length}/${cls.colors} colours`; }
     else if (isUntouched(r)) { state = 'wip'; note = 'empty canvas'; }
     else { state = 'bad'; note = r.blocking.map(c => c.label).join(' · '); }
