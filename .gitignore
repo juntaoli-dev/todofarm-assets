@@ -6,3 +6,5 @@ node_modules/
 # Committing it deadlocks CI: an artist's PR adds art but not a fresh manifest,
 # so a --check step fails every submission.
 manifest.json
+placeholders
+sheet.html

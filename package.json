@@ -2,11 +2,17 @@
   "name": "todofarm-assets",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "test": "node scripts/selftest.mjs",
-    "validate": "node scripts/validate-art.mjs",
-    "manifest": "node scripts/build-manifest.mjs",
-    "manifest:check": "node scripts/build-manifest.mjs --check"
+    "next": "node scripts/next.mjs",
+    "scaffold": "node scripts/scaffold.mjs",
+    "watch": "node scripts/watch.mjs",
+    "check": "node scripts/validate-art.mjs",
+    "sheet": "node scripts/sheet.mjs && open sheet.html",
+    "placeholders": "node scripts/placeholders.mjs",
+    "manifest": "node scripts/build-manifest.mjs --with-placeholders",
+    "test": "node scripts/selftest.mjs"
   }
 }

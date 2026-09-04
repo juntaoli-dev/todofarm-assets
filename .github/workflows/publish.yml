@@ -37,7 +37,7 @@ jobs:
         id: build
         run: |
           TAG="${{ github.event.inputs.tag || github.ref_name }}"
-          node scripts/build-manifest.mjs
+          node scripts/build-manifest.mjs --strict
           tar czf "art-$TAG.tar.gz" art/
           sha256sum manifest.json "art-$TAG.tar.gz" > checksums.txt
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
