@@ -1,0 +1,8 @@
+{
+  "id": "crop.wheat.stages",
+  "class": "crop",
+  "status": "open",
+  "blocks": "v1",
+  "brief": "Four growth stages, seedling to ripe. Every stage must be readable at 16px, so change the silhouette between stages rather than only the colour.",
+  "submissions": []
+}

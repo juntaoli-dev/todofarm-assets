@@ -1,0 +1,8 @@
+{
+  "id": "tile.anim.water",
+  "class": "tile.anim",
+  "status": "open",
+  "blocks": "v1",
+  "brief": "Four frame water loop. Frame 1 on top. Should read as motion at 8fps without shimmering.",
+  "submissions": []
+}

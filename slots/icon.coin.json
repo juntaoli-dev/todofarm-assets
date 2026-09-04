@@ -1,0 +1,8 @@
+{
+  "id": "icon.coin",
+  "class": "icon",
+  "status": "open",
+  "blocks": "v0",
+  "brief": "The coin. Shown in the HUD and beside every price, so it must read at 16px with no outline help.",
+  "submissions": []
+}

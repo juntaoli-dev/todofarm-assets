@@ -1,0 +1,8 @@
+{
+  "id": "tile.terrain.dirt_path",
+  "class": "tile",
+  "status": "open",
+  "blocks": "v0",
+  "brief": "Worn dirt path. Tiles against grass on every edge without a visible seam. Slightly lighter than soil so the two never read as the same surface.",
+  "submissions": []
+}

@@ -1,0 +1,56 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Deliberately read-only. Validation needs no secrets, so this workflow is
+# safe to run on pull requests from forks. Failure detail goes to the job
+# summary, which is visible on the PR without any write permission. That
+# sidesteps the pull_request_target footgun entirely: a fork PR cannot post
+# a comment back, but it does not need to, because the summary and the
+# failing status check carry the reason.
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: validator self-test
+        run: |
+          echo '## Validator self-test' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          node scripts/selftest.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: validate changed art
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            CHANGED=$(git diff --name-only --diff-filter=ACMR "$BASE" HEAD -- 'art/*.png' || true)
+          else
+            CHANGED=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- 'art/*.png' || true)
+          fi
+          echo '## Art validation' >> "$GITHUB_STEP_SUMMARY"
+          if [ -z "$CHANGED" ]; then
+            echo 'No art changed in this diff.' >> "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          node scripts/validate-art.mjs $CHANGED 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+          STATUS=${PIPESTATUS[0]}
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          exit $STATUS
+
+      # The manifest is generated, so it is checked rather than committed back.
+      # A bot pushing to a protected branch needs an app token and can retrigger
+      # workflows; requiring the submitter to include a fresh manifest avoids both.
+      - name: manifest is current
+        run: node scripts/build-manifest.mjs --check

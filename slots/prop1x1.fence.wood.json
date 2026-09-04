@@ -1,0 +1,8 @@
+{
+  "id": "prop1x1.fence.wood",
+  "class": "prop1x1",
+  "status": "open",
+  "blocks": "v1",
+  "brief": "Wooden fence, horizontal run. Rails must meet edge to edge with the neighbouring tile with no gap.",
+  "submissions": []
+}

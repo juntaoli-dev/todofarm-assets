@@ -1,0 +1,8 @@
+{
+  "id": "tile.terrain.grass_b",
+  "class": "tile",
+  "status": "open",
+  "blocks": "v1",
+  "brief": "Grass variant B. Same base tone as grass_a, different detail placement. Used to break up repetition, so the difference must be subtle.",
+  "submissions": []
+}

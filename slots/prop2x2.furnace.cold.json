@@ -1,0 +1,8 @@
+{
+  "id": "prop2x2.furnace.cold",
+  "class": "prop2x2",
+  "status": "open",
+  "blocks": "v0",
+  "brief": "The furnace, unlit. Stone and iron. The lit variant is a separate slot, so keep the stonework identical between them.",
+  "submissions": []
+}

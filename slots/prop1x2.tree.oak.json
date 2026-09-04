@@ -1,0 +1,8 @@
+{
+  "id": "prop1x2.tree.oak",
+  "class": "prop1x2",
+  "status": "open",
+  "blocks": "v1",
+  "brief": "Oak tree. Canopy reads as one mass, not individual leaves. The player walks behind it, so the trunk base must sit exactly on the anchor.",
+  "submissions": []
+}

@@ -1,0 +1,12 @@
+{
+  "name": "todofarm-assets",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node scripts/selftest.mjs",
+    "validate": "node scripts/validate-art.mjs",
+    "manifest": "node scripts/build-manifest.mjs",
+    "manifest:check": "node scripts/build-manifest.mjs --check"
+  }
+}
