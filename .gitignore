@@ -1,3 +1,8 @@
 .DS_Store
 node_modules/
 *.log
+
+# Generated at publish time and uploaded to a Release, never committed.
+# Committing it deadlocks CI: an artist's PR adds art but not a fresh manifest,
+# so a --check step fails every submission.
+manifest.json

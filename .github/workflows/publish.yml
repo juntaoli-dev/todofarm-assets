@@ -1,0 +1,58 @@
+name: publish
+
+# Builds the manifest and a tarball of approved art, then attaches both to a
+# Release. The game fetches exactly two files, pinned by tag.
+#
+# Why a Release rather than raw.githubusercontent.com: unauthenticated reads are
+# capped at 60/hour per IP, and GitHub-hosted runners share Azure egress IPs, so
+# that bucket is shared with every other anonymous consumer on the same address.
+# raw.githubusercontent.com also returns no x-ratelimit-* headers, so there is no
+# warning before throttling. Releases carry no bandwidth limit at all.
+
+on:
+  push:
+    tags: ['assets-v*']
+  workflow_dispatch:
+    inputs:
+      tag: { description: 'tag to publish', required: true }
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: validate everything before publishing
+        run: |
+          node scripts/selftest.mjs
+          node scripts/validate-art.mjs
+
+      - name: build manifest and bundle
+        id: build
+        run: |
+          TAG="${{ github.event.inputs.tag || github.ref_name }}"
+          node scripts/build-manifest.mjs
+          tar czf "art-$TAG.tar.gz" art/
+          sha256sum manifest.json "art-$TAG.tar.gz" > checksums.txt
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          cat checksums.txt
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.build.outputs.tag }}
+          files: |
+            manifest.json
+            art-${{ steps.build.outputs.tag }}.tar.gz
+            checksums.txt
+          body: |
+            Approved art for `${{ steps.build.outputs.tag }}`.
+
+            The game fetches two files from this release. Do not fetch individual
+            sprites from raw.githubusercontent.com: 60 requests/hour per IP,
+            shared across every anonymous consumer on the runner's egress address.
