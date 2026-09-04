@@ -80,6 +80,13 @@ if (existing.has(trackTitle)) {
   gh('issue', 'edit', String(existing.get(trackTitle)), '--body', trackBody);
   console.log(`\nupdated tracking issue #${existing.get(trackTitle)}`);
 } else {
-  const url = gh('issue', 'create', '--title', trackTitle, '--body', trackBody, '--label', 'art', '--pin');
+  const url = gh('issue', 'create', '--title', trackTitle, '--body', trackBody, '--label', 'art');
   console.log(`\ntracking issue: ${url}`);
+  // gh has no --pin flag; pinning is a GraphQL mutation.
+  try {
+    const num = Number(url.split('/').pop());
+    const id = gh('api', `repos/{owner}/{repo}/issues/${num}`, '--jq', '.node_id');
+    gh('api', 'graphql', '-f', 'query=mutation($id:ID!){pinIssue(input:{issueId:$id}){issue{number}}}', '-f', `id=${id}`);
+    console.log('pinned');
+  } catch { console.log('(could not pin, not important)'); }
 }
