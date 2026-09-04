@@ -52,7 +52,10 @@ async function check(file) {
     console.log(`${time()} ${D('....')} ${B(id)}  ${D('empty canvas, waiting for you')}`);
   } else {
     console.log(`${time()} ${R('FAIL')} ${B(id)}`);
-    for (const c of r.blocking) console.log(`        ${R('x')} ${c.label}  ${D(c.value)}`);
+    for (const c of r.blocking) {
+      console.log(`        ${R('x')} ${c.label}  ${D(c.value)}`);
+      if (c.fix) console.log(D(`          ${c.fix.replace(/(.{74}\s)/g, '$1\n          ')}`));
+    }
   }
 }
 

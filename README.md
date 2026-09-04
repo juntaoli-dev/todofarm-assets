@@ -28,13 +28,24 @@ The name is not decoration. The tooling matches the filename against `slots/<slo
 |---|---|
 | **PNG-32** | RGBA, 8 bits per channel. Not indexed, not greyscale. Just export as PNG. |
 | **Binary alpha** | Every pixel is either fully solid or fully see-through. **Turn anti-aliasing off.** Soft edges look blurry once the game scales the sprite up 3&times;. |
+| **No Background layer** | In Aseprite, a visible Background layer makes the export drop its alpha channel entirely. See [ASEPRITE.md](ASEPRITE.md). This is the single most common first failure. |
 | **Exact canvas** | Not "about 16 wide". Exactly the size the slot says. `npm run scaffold` makes the canvas for you so you cannot get this wrong. |
 | **Colour cap** | Between 8 and 24 colours depending on the slot. This is a feature, not a restriction, and it is most of what makes pixel art look professional. |
 | **Transparent means empty** | Erase properly. Do not paint white behind a sprite. |
 | **No `#FF00FF` magenta** | That exact pink is reserved as the "art is missing" marker. |
 | **No colour profile** | Do not tick "embed colour profile" on export. It shifts your colours between your editor and the game. |
 
-You do not have to memorise any of this. `npm run watch` tells you the moment you break one.
+You do not have to memorise any of this. `npm run watch` tells you the moment you break one, **and how to fix it**:
+
+```
+FAIL  prop1x1.chest.wooden.closed
+      x PNG-32 (colour type 6, RGBA)   RGB
+        Your sprite has a visible Background layer. In Aseprite: Layer menu >
+        Background > Convert to Layer. Aseprite drops the alpha channel
+        whenever a Background layer is visible.
+```
+
+Aseprite specifics, including the three settings to get right once: **[ASEPRITE.md](ASEPRITE.md)**.
 
 ---
 
