@@ -39,18 +39,28 @@ if (broken.length) {
   console.log();
 }
 
-// v0 before v1, started before untouched: finishing something beats starting something.
-const rank = x => (x.s.blocks === 'v0' ? 0 : 10) + (x.st === 'started' ? 0 : 1);
+// Difficulty, so a beginner is never handed a 16-frame character sheet first.
+// A flat tile is one drawing; a char sheet is sixteen that must line up.
+const HARD = { tile: 1, icon: 1, ui9: 2, prop1x1: 2, prop1x2: 3, prop2x2: 3,
+  prop2x3: 4, 'tile.anim': 5, crop: 5, char: 9 };
+
+// v0 first, then easiest first, then finishing beats starting.
+const rank = x => (x.s.blocks === 'v0' ? 0 : 100)
+  + (HARD[x.s.class] ?? 5) * 2
+  + (x.st === 'started' ? 0 : 1);
 const queue = state.filter(x => x.st === 'todo' || x.st === 'started').sort((a, b) => rank(a) - rank(b));
 
 if (!queue.length) { console.log(G('Everything is drawn. Tag a release: git tag assets-v1 && git push --tags\n')); process.exit(0); }
 
-console.log(B(`Next ${Math.min(want, queue.length)}:\n`));
+console.log(B(`Next ${Math.min(want, queue.length)}:`));
+console.log(D('easiest first. a character sheet is 16 drawings that have to line up, so it is not where to begin.\n'));
 for (const { s, st } of queue.slice(0, want)) {
   const c = classes[s.class], d = canvasOf(c);
   console.log(`${B(s.id)}  ${s.blocks === 'v0' ? R('[blocks first playable]') : D('[v1]')}` +
     (st === 'started' ? Y('  [started]') : ''));
-  console.log(`  ${B(d.w + 'x' + d.h)}  ${c.frames > 1 ? c.frames + ' frames' + (c.strip ? ', stacked top to bottom' : ', ' + c.grid) + '  ' : ''}` +
+  const cell = c.grid ? `  ${D(`= a ${c.grid.replace(' dirs x ', ' x ')} grid of ${c.w / 4}x${c.h / 4} cells`)}` : '';
+  console.log(`  ${B(d.w + 'x' + d.h)}${cell}`);
+  console.log(`  ${c.frames > 1 ? c.frames + ' frames' + (c.strip ? ', stacked top to bottom' : '') + '  ' : ''}` +
     `max ${c.colors} colours  anchor ${c.anchor}`);
   console.log(D('  ' + s.brief.replace(/(.{78}\s)/g, '$1\n  ')));
   console.log(D(`  npm run scaffold ${s.id}\n`));
