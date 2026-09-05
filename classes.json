@@ -2,15 +2,90 @@
   "standard": "todofarm-art/0.1",
   "tile": 16,
   "classes": {
-    "tile":      { "w": 16, "h": 16, "frames": 1, "colors": 16, "anchor": "top left (0,0)",        "use": "ground: grass, dirt, stone, path" },
-    "tile.anim": { "w": 16, "h": 16, "frames": 4, "strip": true, "colors": 16, "anchor": "top left (0,0)", "use": "water, fire, anything that loops" },
-    "char":      { "w": 64, "h": 64, "frames": 16, "grid": "4 dirs x 4 frames", "colors": 24, "anchor": "feet (8,15) per cell", "use": "player and NPC walk sheets" },
-    "prop1x1":   { "w": 16, "h": 16, "frames": 1, "colors": 20, "anchor": "bottom centre (8,15)",  "use": "chests, lanterns, small decorations" },
-    "prop1x2":   { "w": 16, "h": 32, "frames": 1, "colors": 20, "anchor": "bottom centre (8,31)",  "use": "trees, posts, tall thin props" },
-    "prop2x2":   { "w": 32, "h": 32, "frames": 1, "colors": 24, "anchor": "bottom centre (16,31)", "use": "furniture the craftsman forges" },
-    "prop2x3":   { "w": 32, "h": 48, "frames": 1, "colors": 24, "anchor": "bottom centre (16,47)", "use": "tall furniture, shelves, wardrobes" },
-    "icon":      { "w": 16, "h": 16, "frames": 1, "colors": 12, "anchor": "centre (8,8)",          "use": "inventory and list row glyphs" },
-    "ui9":       { "w": 24, "h": 24, "frames": 1, "colors": 8,  "anchor": "8px corners",           "use": "nine slice panels and frames" },
-    "crop":      { "w": 16, "h": 16, "frames": 4, "strip": true, "colors": 16, "anchor": "bottom centre (8,15)", "use": "4 stage growth from a ticked task" }
+    "tile": {
+      "w": 16,
+      "h": 16,
+      "frames": 1,
+      "colors": 16,
+      "anchor": "top left (0,0)",
+      "use": "ground: grass, dirt, stone, path",
+      "opaque": true
+    },
+    "tile.anim": {
+      "w": 16,
+      "h": 16,
+      "frames": 4,
+      "strip": true,
+      "colors": 16,
+      "anchor": "top left (0,0)",
+      "use": "water, fire, anything that loops",
+      "opaque": true
+    },
+    "char": {
+      "w": 64,
+      "h": 64,
+      "frames": 16,
+      "grid": "4 dirs x 4 frames",
+      "colors": 24,
+      "anchor": "feet (8,15) per cell",
+      "use": "player and NPC walk sheets"
+    },
+    "prop1x1": {
+      "w": 16,
+      "h": 16,
+      "frames": 1,
+      "colors": 20,
+      "anchor": "bottom centre (8,15)",
+      "use": "chests, lanterns, small decorations"
+    },
+    "prop1x2": {
+      "w": 16,
+      "h": 32,
+      "frames": 1,
+      "colors": 20,
+      "anchor": "bottom centre (8,31)",
+      "use": "trees, posts, tall thin props"
+    },
+    "prop2x2": {
+      "w": 32,
+      "h": 32,
+      "frames": 1,
+      "colors": 24,
+      "anchor": "bottom centre (16,31)",
+      "use": "furniture the craftsman forges"
+    },
+    "prop2x3": {
+      "w": 32,
+      "h": 48,
+      "frames": 1,
+      "colors": 24,
+      "anchor": "bottom centre (16,47)",
+      "use": "tall furniture, shelves, wardrobes"
+    },
+    "icon": {
+      "w": 16,
+      "h": 16,
+      "frames": 1,
+      "colors": 12,
+      "anchor": "centre (8,8)",
+      "use": "inventory and list row glyphs"
+    },
+    "ui9": {
+      "w": 24,
+      "h": 24,
+      "frames": 1,
+      "colors": 8,
+      "anchor": "8px corners",
+      "use": "nine slice panels and frames"
+    },
+    "crop": {
+      "w": 16,
+      "h": 16,
+      "frames": 4,
+      "strip": true,
+      "colors": 16,
+      "anchor": "bottom centre (8,15)",
+      "use": "4 stage growth from a ticked task"
+    }
   }
 }

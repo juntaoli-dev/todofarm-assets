@@ -52,7 +52,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**1 of 20 drawn. 11 still block the first playable build.**
+**2 of 20 drawn. 10 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
@@ -64,7 +64,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9744; | `prop1x1.chest.wooden.open` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop2x2.furnace.cold` | **32&times;32** | 1 | 24 | **yes** | not started |
 | &#9744; | `prop2x2.furnace.lit` | **32&times;32** | 1 | 24 | **yes** | not started |
-| &#9744; | `tile.terrain.dirt_path` | **16&times;16** | 1 | 16 | **yes** | not started |
+| &#9745; | `tile.terrain.dirt_path` | **16&times;16** | 1 | 16 | **yes** | 4/16 colours |
 | &#9744; | `tile.terrain.grass_a` | **16&times;16** | 1 | 16 | **yes** | not started |
 | &#9744; | `tile.terrain.soil_tilled` | **16&times;16** | 1 | 16 | **yes** | not started |
 | &#9744; | `ui9.panel.wood` | **24&times;24** | 1 | 8 | **yes** | not started |

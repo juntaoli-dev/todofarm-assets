@@ -48,9 +48,12 @@ async function check(file) {
 
   const r = await validate(new Uint8Array(bytes), { ...cls, id, masterPalette: MASTER });
   if (r.ok) {
-    const warn = r.warnings.length ? Y(`  ${r.warnings.length} advisory`) : '';
     const cols = r.palette ? D(`  ${r.palette.length}/${cls.colors} colours`) : '';
-    console.log(`${time()} ${G('PASS')} ${B(id)}${cols}${warn}`);
+    console.log(`${time()} ${G('PASS')} ${B(id)}${cols}`);
+    for (const c of r.warnings) {
+      console.log(`        ${Y('!')} ${c.label}  ${D(c.value)}  ${D('(advisory, does not block)')}`);
+      if (c.fix) console.log(D(`          ${c.fix.replace(/(.{74}\s)/g, '$1\n          ')}`));
+    }
   } else if (isUntouched(r)) {
     console.log(`${time()} ${D('....')} ${B(id)}  ${D('empty canvas, waiting for you')}`);
   } else {
