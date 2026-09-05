@@ -15,6 +15,7 @@
     "manifest": "node scripts/build-manifest.mjs --with-placeholders",
     "test": "node scripts/selftest.mjs",
     "status": "node scripts/readme-status.mjs",
-    "issues": "node scripts/make-issues.mjs"
+    "issues": "node scripts/make-issues.mjs",
+    "setup": "git config core.hooksPath .githooks && echo \"git hooks enabled\""
   }
 }

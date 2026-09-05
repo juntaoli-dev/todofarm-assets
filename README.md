@@ -52,13 +52,13 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**0 of 20 drawn. 12 still block the first playable build.**
+**1 of 20 drawn. 11 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
-| &#9744; | `char.craftsman.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | canvas ready, empty |
+| &#9744; | `char.craftsman.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9744; | `char.player.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
-| &#9744; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | canvas ready, empty |
+| &#9745; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | 6/12 colours |
 | &#9744; | `prop1x1.chest.iron.locked` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop1x1.chest.wooden.closed` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop1x1.chest.wooden.open` | **16&times;16** | 1 | 20 | **yes** | not started |
@@ -116,12 +116,25 @@ The loop: `next` tells you what and what size &rarr; `scaffold` creates the canv
           x Colours within the cap of 12   320 used
 ```
 
+### One-time setup
+
+```bash
+npm run setup   # enables the git hooks
+```
+
+That makes every commit regenerate the status table for you and refuse art that breaks a rule. Without it you have to remember `npm run status` by hand, and you will not.
+
 ### Shipping
 
 ```bash
-npm run check                          # validate everything
 git add art/ && git commit -m "add the coin" && git push
-git tag assets-v1 && git push --tags   # publishes a Release the game fetches
+gh issue close <n> -c "drawn"          # auto-ticks the box in the tracker
+```
+
+The pre-commit hook validates the art and refreshes this README for you. To publish a build the game can fetch:
+
+```bash
+git tag assets-v1 && git push --tags
 ```
 
 ---

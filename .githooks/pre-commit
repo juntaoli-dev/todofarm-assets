@@ -1,0 +1,26 @@
+#!/bin/sh
+# Keeps the README status table true and stops broken art being committed.
+#
+# The table is generated, so a human being expected to remember `npm run status`
+# was never going to hold. This runs it and re-stages the README automatically.
+
+set -e
+cd "$(git rev-parse --show-toplevel)"
+
+# 1. Validate any art in this commit, before it lands.
+ART=$(git diff --cached --name-only --diff-filter=ACMR -- 'art/*.png' || true)
+if [ -n "$ART" ]; then
+  if ! node scripts/validate-art.mjs $ART; then
+    echo ""
+    echo "Commit stopped: the art above breaks a rule. Fix it, or commit with --no-verify"
+    echo "if you are deliberately saving work in progress."
+    exit 1
+  fi
+fi
+
+# 2. Regenerate the status table and re-stage it if it moved.
+node scripts/readme-status.mjs > /dev/null
+if ! git diff --quiet -- README.md; then
+  git add README.md
+  echo "pre-commit: refreshed the README status table"
+fi
