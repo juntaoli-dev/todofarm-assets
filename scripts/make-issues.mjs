@@ -20,9 +20,9 @@ const slots = readdirSync('slots').filter(f => f.endsWith('.json'))
   .map(f => JSON.parse(readFileSync(`slots/${f}`, 'utf8')))
   .sort((a, b) => (a.blocks === b.blocks ? a.id.localeCompare(b.id) : a.blocks < b.blocks ? -1 : 1));
 
-const existing = new Map(
-  JSON.parse(gh('issue', 'list', '--state', 'all', '--limit', '200', '--json', 'number,title'))
-    .map(i => [i.title, i.number]));
+const all = JSON.parse(gh('issue', 'list', '--state', 'all', '--limit', '200', '--json', 'number,title,state'));
+const existing = new Map(all.map(i => [i.title, i.number]));
+const closed = new Set(all.filter(i => i.state === 'CLOSED').map(i => i.number));
 
 for (const name of ['v0', 'v1', 'art']) {
   try { gh('label', 'create', name, '--force', '--color',
@@ -65,7 +65,11 @@ for (const s of slots) {
 
 if (dry) process.exit(0);
 
-const list = b => made.filter(m => m.s.blocks === b).map(m => `- [ ] #${m.n} — ${m.s.brief.split('.')[0]}.`).join('\n');
+// A plain markdown task list does NOT tick itself when the referenced issue
+// closes; only GitHub's block-based tasklists do that. So set the box from the
+// real issue state and re-run this whenever you close one.
+const list = b => made.filter(m => m.s.blocks === b)
+  .map(m => `- [${closed.has(m.n) ? 'x' : ' '}] #${m.n} — ${m.s.brief.split('.')[0]}.`).join('\n');
 const trackTitle = 'First playable: the 12 sprites that block everything';
 const trackBody = [
   'These tick themselves as each issue closes. Nothing else is needed to get a playable build,',
@@ -74,6 +78,8 @@ const trackBody = [
   '## After that', '', list('v1'), '',
   '---', '',
   'Start with `npm run next`, which always tells you what to draw and at what size.',
+  '',
+  '_Boxes are set from issue state. Run `npm run issues` after closing one to refresh them._',
 ].join('\n');
 
 if (existing.has(trackTitle)) {

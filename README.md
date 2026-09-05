@@ -128,7 +128,7 @@ That makes every commit regenerate the status table for you and refuse art that 
 
 ```bash
 git add art/ && git commit -m "add the coin" && git push
-gh issue close <n> -c "drawn"          # auto-ticks the box in the tracker
+npm run done icon.coin                 # validates, closes the issue, ticks the tracker
 ```
 
 The pre-commit hook validates the art and refreshes this README for you. To publish a build the game can fetch:

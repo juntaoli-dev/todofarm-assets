@@ -16,6 +16,7 @@
     "test": "node scripts/selftest.mjs",
     "status": "node scripts/readme-status.mjs",
     "issues": "node scripts/make-issues.mjs",
-    "setup": "git config core.hooksPath .githooks && echo \"git hooks enabled\""
+    "setup": "git config core.hooksPath .githooks && echo \"git hooks enabled\"",
+    "done": "node scripts/done.mjs"
   }
 }
