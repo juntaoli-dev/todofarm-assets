@@ -106,7 +106,7 @@ npm run done                 # validates, closes the issue, ticks the tracker
 npm run next                 # if you want to see the queue before committing to it
 ```
 
-No slot name needed. `scaffold` takes the top of the queue and `done` finds the one finished file with an open issue. Pass a slot id to either if you want to jump around.
+No slot name needed. **`scaffold` is the front door:** it first asks *"did you finish X?"* about anything you drew that passes but is not closed yet. Say **y** and it marks it done and opens the next canvas. Say **n** and it does nothing, so you cannot accidentally move on from unfinished work. Pass a slot id to either command if you want to jump around.
 
 The loop: `scaffold` &rarr; draw &rarr; `watch` says PASS &rarr; commit &rarr; `done`.
 
@@ -118,13 +118,20 @@ The loop: `scaffold` &rarr; draw &rarr; `watch` says PASS &rarr; commit &rarr; `
           x Colours within the cap of 12   320 used
 ```
 
-### One-time setup
+### One-time setup, on every machine you draw on
+
+Works the same on macOS, Windows and Linux.
+
+1. Install [Node 18+](https://nodejs.org), [GitHub CLI](https://cli.github.com) (`gh auth login`), and [Aseprite](https://www.aseprite.org).
+2. Clone this repo, then:
 
 ```bash
-npm run setup   # enables the git hooks
+npm run setup
 ```
 
-That makes every commit regenerate the status table for you and refuse art that breaks a rule. Without it you have to remember `npm run status` by hand, and you will not.
+That enables the git hooks (validate art on commit, refresh the README table), and **installs the master palette into Aseprite's presets folder** for whichever OS you are on. Restart Aseprite and Resurrect 64 is in the palette dropdown.
+
+Nothing else to configure. There are no dependencies to install.
 
 ### Shipping
 

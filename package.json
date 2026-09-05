@@ -10,13 +10,13 @@
     "scaffold": "node scripts/scaffold.mjs",
     "watch": "node scripts/watch.mjs",
     "check": "node scripts/validate-art.mjs",
-    "sheet": "node scripts/sheet.mjs && open sheet.html",
+    "sheet": "node scripts/sheet.mjs",
     "placeholders": "node scripts/placeholders.mjs",
     "manifest": "node scripts/build-manifest.mjs --with-placeholders",
     "test": "node scripts/selftest.mjs",
     "status": "node scripts/readme-status.mjs",
     "issues": "node scripts/make-issues.mjs",
-    "setup": "git config core.hooksPath .githooks && echo \"git hooks enabled\"",
+    "setup": "node scripts/setup.mjs",
     "done": "node scripts/done.mjs"
   }
 }

@@ -1,0 +1,7 @@
+# The pre-commit hook is a sh script; CRLF would break it on Windows.
+.githooks/*   text eol=lf
+*.mjs         text eol=lf
+*.json        text eol=lf
+*.md          text eol=lf
+art/*.png     binary
+palette/*     binary

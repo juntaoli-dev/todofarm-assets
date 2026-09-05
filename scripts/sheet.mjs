@@ -3,10 +3,11 @@
  * A solo artist has no art director, so the substitute is seeing everything at
  * once: style drift is obvious on a contact sheet and invisible file by file.
  *
- * Run: node scripts/sheet.mjs && open sheet.html
+ * Run: npm run sheet        (opens sheet.html with your default browser)
  */
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { validate, canvasOf, isUntouched } from '../lib/validate.mjs';
+import { openFile } from '../lib/open.mjs';
 import { loadPalette } from '../lib/validate.mjs';
 
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
@@ -63,4 +64,5 @@ figcaption em{color:var(--bad);font-style:normal;font-size:10px;letter-spacing:.
 <h1>todoFarm contact sheet</h1>
 <p>Green is done, orange started, red failing, purple placeholder. Style drift is obvious here and invisible file by file.</p>
 <div class="grid">${cards.join('')}</div>`);
-console.log(`sheet.html  ${slots.length} slots. open sheet.html`);
+console.log(`sheet.html  ${slots.length} slots`);
+if (!process.argv.includes('--no-open')) openFile('sheet.html');
