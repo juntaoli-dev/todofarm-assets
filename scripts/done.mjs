@@ -6,8 +6,22 @@ import { readFileSync, existsSync } from 'fs';
 import { execFileSync } from 'child_process';
 import { validate, loadPalette, summarise } from '../lib/validate.mjs';
 
-const id = process.argv[2];
-if (!id) { console.error('usage: npm run done <slot-id>'); process.exit(1); }
+import { loadQueue } from '../lib/queue.mjs';
+
+let id = process.argv[2];
+if (!id) {
+  const { state } = await loadQueue();
+  const gh0 = (...a) => execFileSync('gh', a, { encoding: 'utf8' }).trim();
+  const open = new Set(JSON.parse(gh0('issue', 'list', '--state', 'open', '--limit', '200', '--json', 'title')).map(i => i.title));
+  const ready = state.filter(x => x.st === 'done' && open.has(x.s.id)).map(x => x.s.id);
+  if (ready.length === 0) { console.log('Nothing passing with an open issue. Draw something first.'); process.exit(0); }
+  if (ready.length > 1) {
+    console.log('More than one finished slot. Say which:\n' + ready.map(r => `  npm run done ${r}`).join('\n'));
+    process.exit(1);
+  }
+  id = ready[0];
+  console.log(`finishing: ${id}\n`);
+}
 const file = `art/${id}@1x.png`;
 if (!existsSync(`slots/${id}.json`)) { console.error(`no slot "${id}"`); process.exit(1); }
 if (!existsSync(file)) { console.error(`${file} does not exist yet`); process.exit(1); }

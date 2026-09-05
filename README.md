@@ -65,7 +65,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9744; | `prop2x2.furnace.cold` | **32&times;32** | 1 | 24 | **yes** | not started |
 | &#9744; | `prop2x2.furnace.lit` | **32&times;32** | 1 | 24 | **yes** | not started |
 | &#9745; | `tile.terrain.dirt_path` | **16&times;16** | 1 | 16 | **yes** | 2/16 colours |
-| &#9744; | `tile.terrain.grass_a` | **16&times;16** | 1 | 16 | **yes** | not started |
+| &#9744; | `tile.terrain.grass_a` | **16&times;16** | 1 | 16 | **yes** | canvas ready, empty |
 | &#9744; | `tile.terrain.soil_tilled` | **16&times;16** | 1 | 16 | **yes** | not started |
 | &#9744; | `ui9.panel.wood` | **24&times;24** | 1 | 8 | **yes** | not started |
 | &#9744; | `crop.wheat.stages` | **16&times;64** | 4 stacked | 16 | no | not started |
@@ -100,13 +100,15 @@ This means you never have to draw ahead of the code, or code ahead of the drawin
 ## The four commands
 
 ```bash
-npm run next                 # what to draw next, in priority order, with the spec
-npm run scaffold <slot-id>   # correctly sized empty PNG, opens it for you
+npm run scaffold             # next slot: correctly sized empty PNG, opened for you
 npm run watch                # leave running beside your editor; every save is checked
-npm run sheet                # contact sheet of everything, to spot style drift
+npm run done                 # validates, closes the issue, ticks the tracker
+npm run next                 # if you want to see the queue before committing to it
 ```
 
-The loop: `next` tells you what and what size &rarr; `scaffold` creates the canvas &rarr; you draw &rarr; `watch` says PASS or exactly what is wrong.
+No slot name needed. `scaffold` takes the top of the queue and `done` finds the one finished file with an open issue. Pass a slot id to either if you want to jump around.
+
+The loop: `scaffold` &rarr; draw &rarr; `watch` says PASS &rarr; commit &rarr; `done`.
 
 ```
 11:32:47  ....  icon.coin   empty canvas, waiting for you
@@ -128,7 +130,7 @@ That makes every commit regenerate the status table for you and refuse art that 
 
 ```bash
 git add art/ && git commit -m "add the coin" && git push
-npm run done icon.coin                 # validates, closes the issue, ticks the tracker
+npm run done
 ```
 
 The pre-commit hook validates the art and refreshes this README for you. To publish a build the game can fetch:

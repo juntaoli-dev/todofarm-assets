@@ -8,9 +8,31 @@ set -e
 cd "$(git rev-parse --show-toplevel)"
 
 # 1. Validate any art in this commit, before it lands.
+#    An untouched scaffold (blank canvas) is not broken art, it is a slot you
+#    have not started. Unstage it and carry on rather than blocking the commit.
 ART=$(git diff --cached --name-only --diff-filter=ACMR -- 'art/*.png' || true)
 if [ -n "$ART" ]; then
-  if ! node scripts/validate-art.mjs $ART; then
+  KEEP=""
+  for f in $ART; do
+    if node -e "
+      import('./lib/validate.mjs').then(async ({validate,isUntouched})=>{
+        const fs=await import('fs'); const {classes}=JSON.parse(fs.readFileSync('classes.json','utf8'));
+        const id=require('path').basename('$f').replace(/@1x\.png$/,'');
+        const slot=JSON.parse(fs.readFileSync('slots/'+id+'.json','utf8'));
+        const r=await validate(new Uint8Array(fs.readFileSync('$f')),{...classes[slot.class],id});
+        process.exit(isUntouched(r)?3:0);
+      })" 2>/dev/null; then KEEP="$KEEP $f"
+    else
+      rc=$?
+      if [ "$rc" = "3" ]; then
+        git reset -q -- "$f"
+        echo "pre-commit: $f is an empty scaffold, left out of this commit"
+      else
+        KEEP="$KEEP $f"
+      fi
+    fi
+  done
+  if [ -n "$KEEP" ] && ! node scripts/validate-art.mjs $KEEP; then
     echo ""
     echo "Commit stopped: the art above breaks a rule. Fix it, or commit with --no-verify"
     echo "if you are deliberately saving work in progress."

@@ -8,8 +8,15 @@ import { execFile } from 'child_process';
 import { blank } from '../lib/png.mjs';
 import { canvasOf } from '../lib/validate.mjs';
 
-const id = process.argv[2];
-if (!id) { console.error('usage: node scripts/scaffold.mjs <slot-id>'); process.exit(1); }
+import { loadQueue } from '../lib/queue.mjs';
+
+let id = process.argv.slice(2).find(a => !a.startsWith('--'));
+if (!id) {
+  const { queue } = await loadQueue();
+  if (!queue.length) { console.log('Nothing left to scaffold. Everything is drawn.'); process.exit(0); }
+  id = queue[0].s.id;
+  console.log(`next up: ${id}\n`);
+}
 if (!existsSync(`slots/${id}.json`)) {
   console.error(`no slot "${id}". Run: node scripts/next.mjs`); process.exit(1);
 }
