@@ -129,9 +129,11 @@ Works the same on macOS, Windows and Linux.
 npm run setup
 ```
 
-That enables the git hooks (validate art on commit, refresh the README table), and **installs the master palette into Aseprite's presets folder** for whichever OS you are on. Restart Aseprite and Resurrect 64 is in the palette dropdown.
+That enables the git hooks (validate art on commit, refresh the README table), and **installs the master palette into Aseprite's presets folder** for whichever OS you are on. In Aseprite, open the palette Presets popup and press its refresh button (or F5) and Resurrect 64 appears. No restart.
 
-Nothing else to configure. There are no dependencies to install.
+Nothing else to install. There are no dependencies.
+
+**If you commit from GitHub Desktop:** go to Options &rarr; Git &rarr; Hooks and turn on *Load Git hook environment variables from shell* (Desktop 3.5.5 or newer). Without it, Desktop's bundled Git cannot find `node`, the hook fails, and Desktop offers to bypass it. Committing from a terminal has no such problem.
 
 ### Shipping
 

@@ -15,14 +15,18 @@ execSync('git config core.hooksPath .githooks');
 ok('git hooks enabled (core.hooksPath = .githooks)');
 
 // 2. Aseprite: drop the master palette into its presets so it is in the dropdown
+// Aseprite reads presets from <user config folder>/palettes. Same on Steam.
+// ASEPRITE_USER_FOLDER overrides the location on every OS.
 const p = process.platform;
-const dir = p === 'darwin' ? join(homedir(), 'Library', 'Application Support', 'Aseprite', 'palettes')
-  : p === 'win32' ? join(process.env.APPDATA || join(homedir(), 'AppData', 'Roaming'), 'Aseprite', 'palettes')
-  : join(process.env.XDG_CONFIG_HOME || join(homedir(), '.config'), 'aseprite', 'palettes');
+const userDir = process.env.ASEPRITE_USER_FOLDER
+  || (p === 'darwin' ? join(homedir(), 'Library', 'Application Support', 'Aseprite')
+  : p === 'win32' ? join(process.env.APPDATA || join(homedir(), 'AppData', 'Roaming'), 'Aseprite')
+  : join(process.env.XDG_CONFIG_HOME || join(homedir(), '.config'), 'aseprite'));
+const dir = join(userDir, 'palettes');
 try {
   mkdirSync(dir, { recursive: true });
   copyFileSync('palette/resurrect-64.gpl', join(dir, 'resurrect-64.gpl'));
-  ok(`Resurrect 64 installed into Aseprite presets\n       ${dir}\n       (restart Aseprite, then palette menu > presets)`);
+  ok(`Resurrect 64 installed into Aseprite presets\n       ${dir}\n       (in Aseprite: palette menu > Presets, press the refresh button or F5, no restart needed)`);
 } catch (e) { warn(`could not install the palette into Aseprite: ${e.message}\n       load palette/resurrect-64.gpl by hand instead`); }
 
 // 3. gh is needed by `npm run done` and `npm run scaffold`'s finish check

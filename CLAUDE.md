@@ -48,6 +48,12 @@ The queue ranking lives in `lib/queue.mjs`: first-playable (`blocks: v0`) before
 
 Resurrect 64 by Kerrie Lake. Commercial use confirmed by the author on the Lospec page, no formal licence file. Credit her in the game. Off-palette colours are a warning, never a block; do not promote that to blocking.
 
-## Cross-platform
+## Cross-platform, verified against Git and Aseprite sources
 
-Everything runs on macOS, Windows and Linux. `lib/open.mjs` handles opening files. `scripts/setup.mjs` installs the palette into Aseprite's preset folder per OS. The hook is POSIX sh and Git for Windows runs it through its bundled sh. Line endings for scripts are pinned LF in `.gitattributes`.
+- The hook shebang must stay `#!/bin/sh`. Git for Windows runs it through its bundled `usr\bin\sh.exe` from any shell or GUI. `#!/bin/bash` breaks under MinGit, which is what GitHub Desktop ships.
+- The hook must be committed as mode `100755`. Windows ignores the executable bit, but macOS and Linux silently skip a `100644` hook. Fix with `git add --chmod=+x .githooks/pre-commit`, never with `chmod` on a Windows checkout (`core.fileMode=false` there).
+- `.gitattributes` pins `.githooks/* text eol=lf`. A CRLF hook fails with `set: -: invalid option`. Anyone with a CRLF checkout runs `git add --renormalize .`.
+- `core.hooksPath` is per clone, which is why `npm run setup` exists. Keep it relative (`.githooks`): JetBrains only detects hooks at relative or native `C:/` paths.
+- GitHub Desktop 3.5.5+ needs Options > Git > Hooks > *Load Git hook environment variables from shell* or `node` is not on PATH inside the hook.
+- Aseprite presets live in `<user config>/palettes`: `%APPDATA%\Aseprite`, `~/Library/Application Support/Aseprite`, `$XDG_CONFIG_HOME/aseprite`. `ASEPRITE_USER_FOLDER` overrides all three. Steam is the same binary. The presets list is cached on first open; the refresh button (F5) rescans, no restart.
+- `lib/open.mjs` uses `cmd.exe /c start "" <file>` with an EMPTY title arg. A literal `'""'` gets escaped by libuv and breaks. `explorer.exe` always exits 1 and is unusable from Node.
