@@ -118,7 +118,8 @@ npm run scaffold             # next slot: correctly sized empty PNG, opened for 
 npm run watch                # leave running beside your editor; every save is checked
 npm run done                 # validates, closes the issue, ticks the tracker
 npm run next                 # if you want to see the queue before committing to it
-npm run brief <slot-id>      # read any slot's brief and spec, nothing else happens
+npm run brief                # the brief for what you are working on right now
+npm run brief <slot-id>      # or any slot, or `all` for the list
 ```
 
 No slot name needed. **`scaffold` is the front door:** it first asks *"did you finish X?"* about anything you drew that passes but is not closed yet. Say **y** and it marks it done and opens the next canvas. Say **n** and it does nothing, so you cannot accidentally move on from unfinished work. Pass a slot id to either command if you want to jump around.
