@@ -3,6 +3,6 @@
   "class": "icon",
   "status": "open",
   "blocks": "v0",
-  "brief": "A closed ledger spine, seen from the front on the shelf. One per category. The game recolours it per ledger, so draw it in one mid tone plus shading and no fixed hue. Nine of these sit side by side, so silhouette first.",
+  "brief": "A ledger standing upright on the shelf, so all you see is its SPINE: the narrow back edge where the title goes, like any book on a bookshelf. Draw a tall thin rectangle, roughly 6 to 8 px wide and 14 px tall, standing on the bottom of the canvas, with one or two lighter bands across it where a label would sit. One outline, one mid tone for the leather, one band colour: three or four colours. Draw it in a neutral brown; the game tints each ledger a different hue. Nine of these stand side by side on the shelf, so the shape must read as a book at a glance.",
   "submissions": []
 }
