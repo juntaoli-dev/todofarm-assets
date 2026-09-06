@@ -14,6 +14,7 @@ import { execFileSync } from 'child_process';
 import { canvasOf } from '../lib/validate.mjs';
 
 const dry = process.argv.includes('--dry');
+const update = process.argv.includes('--update'); // rewrite bodies of existing open slot issues
 const gh = (...a) => execFileSync('gh', a, { encoding: 'utf8' }).trim();
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
 const slots = readdirSync('slots').filter(f => f.endsWith('.json'))
@@ -33,7 +34,7 @@ const made = [];
 for (const s of slots) {
   const cls = classes[s.class], d = canvasOf(cls);
   const title = `${s.id}`;
-  if (existing.has(title)) { made.push({ s, n: existing.get(title) }); continue; }
+  if (existing.has(title) && !update) { made.push({ s, n: existing.get(title) }); continue; }
 
   const body = [
     s.brief, '',
@@ -53,12 +54,21 @@ for (const s of slots) {
     '```',
     '',
     'Close this issue when `npm run watch` says **PASS** and the file is committed.',
+    ...(s.sketch ? ['', '### Sketch', '', 'A picture of the brief, not the art. `# outline  - shadow  o mid  + light  = accent  . transparent`', '',
+      '```', ...s.sketch.map(r => r.split('').join(' ')), '```',
+      ...(s.sketchNote ? ['', s.sketchNote] : []), '', `\`npm run sketch ${s.id}\` renders it as a PNG.`] : []),
   ].join('\n');
 
-  if (dry) { console.log(`would create: ${title}`); continue; }
+  if (dry) { console.log(`would ${existing.has(title) ? 'update' : 'create'}: ${title}`); continue; }
+  let n;
+  if (existing.has(title)) {
+    n = existing.get(title);
+    if (!closed.has(n)) { gh('issue', 'edit', String(n), '--body', body); console.log(`#${n}  ${title}  (updated)`); }
+    made.push({ s, n }); continue;
+  }
   const url = gh('issue', 'create', '--title', title, '--body', body,
     '--label', 'art', '--label', s.blocks);
-  const n = Number(url.split('/').pop());
+  n = Number(url.split('/').pop());
   made.push({ s, n });
   console.log(`#${n}  ${title}`);
 }

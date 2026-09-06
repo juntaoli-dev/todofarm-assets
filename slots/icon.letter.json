@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "An unfiled entry, a folded letter with a small seal. Shown in the inbox list before the clerk has filed it.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    "................",
+    "................",
+    ".##############.",
+    ".#+----------+#.",
+    ".#-+--------+-#.",
+    ".#--+------+--#.",
+    ".#---+----+---#.",
+    ".#----+==+----#.",
+    ".#++++++++++++#.",
+    ".#++++++++++++#.",
+    ".##############.",
+    "................",
+    "................",
+    "................",
+    "................"
+  ],
+  "sketchNote": "An envelope seen from the front, flap folded down to a wax seal (the =) in the middle."
 }

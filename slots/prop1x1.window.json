@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "A window set into the wall tile, showing a hint of sky. Wall-mounted, so it must align to the plaster grid.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    ".##############.",
+    ".#=====##=====#.",
+    ".#=====##=====#.",
+    ".#==+==##==+==#.",
+    ".#=====##=====#.",
+    ".#=====##=====#.",
+    ".##############.",
+    ".#=====##=====#.",
+    ".#=====##=====#.",
+    ".#=====##=====#.",
+    ".#=====##=====#.",
+    ".#=====##=====#.",
+    ".##############.",
+    "..############..",
+    "................"
+  ],
+  "sketchNote": "Four panes of sky (the =) in a wooden cross frame, a sill along the bottom. Drawn onto the wall tile, so the frame edge must sit cleanly on plaster."
 }

@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "A standing oil lamp, store decoration. Warm glow, brass fittings.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    "......####......",
+    "......#++#......",
+    "......#==#......",
+    "......#==#......",
+    "......#++#......",
+    ".....######.....",
+    "....#oooooo#....",
+    "....#oooooo#....",
+    ".....#oooo#.....",
+    "......#oo#......",
+    "......#oo#......",
+    ".....######.....",
+    "....########....",
+    "................",
+    "................"
+  ],
+  "sketchNote": "A table oil lamp: glass chimney with the flame (the =), round brass font, stem, flat base."
 }

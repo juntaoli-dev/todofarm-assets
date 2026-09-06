@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "The mayor's stamp. Pressed onto a journal entry when it is completed. Wooden handle, brass base, a little ink.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    "......####......",
+    ".....#oooo#.....",
+    ".....#oooo#.....",
+    "......#oo#......",
+    "......#oo#......",
+    "......#oo#......",
+    "...##########...",
+    "..#==========#..",
+    "..#==========#..",
+    "..############..",
+    "..#----------#..",
+    "..############..",
+    "................",
+    "................",
+    "................"
+  ],
+  "sketchNote": "A rubber stamp: round wooden knob, thin neck, brass plate (the =), dark rubber underneath."
 }

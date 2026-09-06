@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v0",
   "brief": "The clerk. Mute. Files your entries into the ledgers and never speaks. Ink-stained cuffs, a vest, spectacles. Must read as a records-keeper, not a shopkeeper. Same sheet layout as the player.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    "................",
+    "....########....",
+    "...#oooooooo#...",
+    "...#oooooooo#...",
+    "...#++++++++#...",
+    "...#=+#++#+=#...",
+    "...#++++++++#...",
+    "....#++--++#....",
+    "...#+#oooo#+#...",
+    "..#++#oooo#++#..",
+    "..#++#oooo#++#..",
+    "...#+#oooo#+#...",
+    "....#--##--#....",
+    "....#--##--#....",
+    "....##....##...."
+  ],
+  "sketchNote": "Same sheet layout as the player. Flatter hair, spectacles (the = at the eyes), a dark vest over light sleeves. Slightly narrower than the mayor."
 }

@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v0",
   "brief": "Interior wall, plaster over a dark wood base. Tiles horizontally. The bottom two pixel rows are the skirting, so the seam against the floor reads as trim rather than a hard edge.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "oooooooooooooooo",
+    "ooo+oooooooooooo",
+    "oooooooooooo+ooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "o+oooooooooooooo",
+    "oooooooooooooooo",
+    "ooooooooo+oooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooo+ooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooo+ooo",
+    "oooooooooooooooo",
+    "################",
+    "----------------"
+  ],
+  "sketchNote": "Fourteen rows of plaster with a few lighter specks, then a two-row skirting board at the bottom. Only tiles left to right."
 }

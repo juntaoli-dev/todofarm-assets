@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "Grass variant B. Same base tone as grass_a, different detail placement. Used to break up repetition, so the difference must be subtle.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "oooooooooooooooo",
+    "oooooooooooo+ooo",
+    "ooo+oooooooooooo",
+    "oooooooooooooooo",
+    "oooooooo-ooooooo",
+    "oooooooooooooooo",
+    "o+oooooooooo+ooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooo-ooooooooooo",
+    "oooooooooo+ooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oo+ooooooo-ooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo"
+  ],
+  "sketchNote": "Same base as grass_a with the specks in different places. That is the whole job: break up the repeat."
 }

@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v0",
   "brief": "The inbox. A wooden in-tray on the desk corner where new entries land as letters before the clerk files them. Draw it with two or three letters already in it so an empty tray still reads as a tray.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    "................",
+    "................",
+    "................",
+    "....+++++++.....",
+    "...+++++++++....",
+    "..+++++++++++...",
+    ".#############..",
+    ".#oooooooooo-#..",
+    ".#oooooooooo-#..",
+    ".#oooooooooo-#..",
+    ".#-----------#..",
+    ".#############..",
+    "..#.........#...",
+    "................",
+    "................"
+  ],
+  "sketchNote": "A shallow wooden in-tray with three letters stacked in it, each offset a little. Two small feet."
 }

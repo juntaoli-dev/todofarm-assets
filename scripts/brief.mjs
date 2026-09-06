@@ -50,4 +50,10 @@ console.log(`  ${B(d.w + 'x' + d.h)}${c.grid ? D(`  = a 4 x 4 grid of ${c.w / 4}
 console.log(`  ${c.frames > 1 ? c.frames + ' frames' + (c.strip ? ', stacked top to bottom' : '') + '  ' : ''}max ${c.colors} colours  anchor ${c.anchor}${c.opaque ? '  fully opaque' : ''}`);
 console.log(`  file  art/${s.id}@1x.png\n`);
 console.log('  ' + s.brief.replace(/(.{78}\s)/g, '$1\n  ') + '\n');
+if (s.sketch) {
+  console.log(D('  sketch  (# outline  - shadow  o mid  + light  = accent  . clear)'));
+  for (const r of s.sketch) console.log('  ' + r.split('').join(' '));
+  if (s.sketchNote) console.log(D('\n  ' + s.sketchNote.replace(/(.{78}\s)/g, '$1\n  ')));
+  console.log(D(`\n  npm run sketch ${s.id}     renders this as a PNG and opens it`));
+}
 console.log(D(`  npm run scaffold ${s.id}`));

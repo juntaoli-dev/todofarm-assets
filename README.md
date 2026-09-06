@@ -118,7 +118,8 @@ npm run scaffold             # next slot: correctly sized empty PNG, opened for 
 npm run watch                # leave running beside your editor; every save is checked
 npm run done                 # validates, closes the issue, ticks the tracker
 npm run next                 # if you want to see the queue before committing to it
-npm run brief                # the brief for what you are working on right now
+npm run brief                # the brief and an ASCII sketch of what you are working on
+npm run sketch               # that sketch as a PNG, opened beside your canvas
 npm run brief <slot-id>      # or any slot, or `all` for the list
 ```
 
@@ -165,6 +166,14 @@ git tag assets-v1 && git push --tags
 ```
 
 ---
+
+## The sketches are the developer talking
+
+Every un-started slot carries an ASCII sketch. It is a picture of the brief, drawn by the person writing the code, so you know the shape, the proportions and where the anchor is before you spend an hour. It is not art and it is never committed: `npm run sketch` renders it into `sketches/`, which is gitignored, and you redraw it your way in `art/`.
+
+```
+# outline   - shadow   o mid   + light   = accent   . transparent
+```
 
 ## What to draw it in
 

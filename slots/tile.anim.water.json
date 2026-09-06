@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "Four frame water loop. Frame 1 on top. Should read as motion at 8fps without shimmering.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oo++oooooooo++oo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "ooooooo++ooooo++",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo",
+    "oooooooooooooooo"
+  ],
+  "sketchNote": "One frame shown. Two short highlight dashes; in each of the four frames slide them 4px to the right so they loop. Stacked top to bottom in the file."
 }

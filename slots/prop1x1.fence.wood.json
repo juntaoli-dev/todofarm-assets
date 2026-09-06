@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "Wooden fence, horizontal run. Rails must meet edge to edge with the neighbouring tile with no gap.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    "................",
+    "................",
+    "................",
+    "................",
+    "................",
+    ".......##.......",
+    ".......##.......",
+    "oooooooooooooooo",
+    ".......##.......",
+    "oooooooooooooooo",
+    ".......##.......",
+    ".......##.......",
+    ".......##.......",
+    "................",
+    "................"
+  ],
+  "sketchNote": "One post in the middle, two rails running the full width so neighbouring tiles join edge to edge."
 }

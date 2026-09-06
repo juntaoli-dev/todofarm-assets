@@ -4,5 +4,32 @@
   "status": "open",
   "blocks": "v0",
   "brief": "Nine slice parchment panel. This is now the journal page itself, so every entry is read on it. Lighter than the wood panel, same 8px corners, and the centre must be plain enough to put handwriting-style text on.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "########################",
+    "#oooooooooooooooooooooo#",
+    "#o####################o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#+++++=++++++=+++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#+++++=++++++=+++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o#++++++++++++++++++#o#",
+    "#o####################o#",
+    "#oooooooooooooooooooooo#",
+    "########################"
+  ],
+  "sketchNote": "Same structure as the wood panel with a lighter fill, since text sits on it. The four = dots mark the 8x8 stretch centre; keep it flat."
 }

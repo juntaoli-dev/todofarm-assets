@@ -4,5 +4,32 @@
   "status": "open",
   "blocks": "v0",
   "brief": "Nine slice wooden panel, 8px corners. The centre 8x8 is what stretches, so keep it plain or it will smear.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "########################",
+    "#++++++++++++++++++++++#",
+    "#+####################+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#ooooo=oooooo=ooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#ooooo=oooooo=ooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+#oooooooooooooooooo#+#",
+    "#+####################+#",
+    "#++++++++++++++++++++++#",
+    "########################"
+  ],
+  "sketchNote": "Outline, a light inner border, then a plain fill. The four = dots mark the corners of the 8x8 centre that stretches; keep that region flat."
 }

@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "A potted plant, store decoration. Terracotta pot, a few broad leaves.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    ".....++..++.....",
+    "....++++++++....",
+    "...++++++++++...",
+    "..++++++++++++..",
+    "..++++++++++++..",
+    "...++++++++++...",
+    "....#########...",
+    "....#=======#...",
+    ".....#ooooo#....",
+    ".....#ooooo#....",
+    ".....#oooo-#....",
+    ".....#ooo--#....",
+    "......#####.....",
+    "................",
+    "................"
+  ],
+  "sketchNote": "A bushy plant in a terracotta pot with a band around the rim."
 }

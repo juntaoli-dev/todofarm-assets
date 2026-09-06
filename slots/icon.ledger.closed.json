@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v0",
   "brief": "A ledger standing upright on the shelf, so all you see is its SPINE: the narrow back edge where the title goes, like any book on a bookshelf. Draw a tall thin rectangle, roughly 6 to 8 px wide and 14 px tall, standing on the bottom of the canvas, with one or two lighter bands across it where a label would sit. One outline, one mid tone for the leather, one band colour: three or four colours. Draw it in a neutral brown; the game tints each ledger a different hue. Nine of these stand side by side on the shelf, so the shape must read as a book at a glance.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "................",
+    ".....######.....",
+    ".....#oooo#.....",
+    ".....#oooo#.....",
+    ".....#====#.....",
+    ".....#====#.....",
+    ".....#oooo#.....",
+    ".....#oooo#.....",
+    ".....#====#.....",
+    ".....#oooo#.....",
+    ".....#oooo#.....",
+    ".....#oooo#.....",
+    ".....#oooo#.....",
+    ".....######.....",
+    "................",
+    "................"
+  ],
+  "sketchNote": "The spine: a 6-wide, 13-tall upright rectangle. Two label bands. Draw it in neutral brown; the game tints each ledger a different hue."
 }

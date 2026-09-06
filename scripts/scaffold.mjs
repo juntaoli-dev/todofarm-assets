@@ -74,5 +74,6 @@ else {
 console.log(`  max ${cls.colors} colours · anchor ${cls.anchor}` +
   (cls.frames > 1 ? ` · ${cls.frames} frames ${cls.strip ? 'stacked top to bottom' : `(${cls.grid}, ${w / 4}x${h / 4} cells)`}` : ''));
 console.log(`\n  ${slot.brief}\n`);
+if (slot.sketch) console.log('  npm run sketch    opens a PNG of what this should roughly look like\n');
 console.log('Leave `npm run watch` running and it will check every time you save.');
 if (!process.argv.includes('--no-open')) openFile(file);

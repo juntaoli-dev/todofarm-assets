@@ -4,5 +4,24 @@
   "status": "open",
   "blocks": "v1",
   "brief": "Tilled soil, where crops sit. Furrows run horizontally. Must tile against itself and against grass.",
-  "submissions": []
+  "submissions": [],
+  "sketch": [
+    "++++++++++++++++",
+    "oooooooooooooooo",
+    "----------------",
+    "---o------------",
+    "++++++++++++++++",
+    "oooooooooooooooo",
+    "------------o---",
+    "----------------",
+    "++++++++++++++++",
+    "oooooooooooooooo",
+    "----------------",
+    "----o-----------",
+    "++++++++++++++++",
+    "oooooooooooooooo",
+    "---------o------",
+    "----------------"
+  ],
+  "sketchNote": "Horizontal furrows: a lit ridge row, a mid row, two shadow rows in the trough, repeated four times. A stray pebble or two in the troughs."
 }
