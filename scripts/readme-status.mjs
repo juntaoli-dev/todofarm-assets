@@ -43,7 +43,7 @@ if (i < 0 || j < 0) { console.error('README is missing the STATUS markers'); pro
 const next = src.slice(0, i + A.length) + '\n' + table + '\n' + src.slice(j);
 
 if (process.argv.includes('--check')) {
-  if (next !== src) { console.error('README status table is stale. Run: npm run status'); process.exit(1); }
+  if (next !== src) { console.error('README status table is stale. Run: tf status'); process.exit(1); }
   console.log('README status table is current');
 } else {
   writeFileSync('README.md', next);

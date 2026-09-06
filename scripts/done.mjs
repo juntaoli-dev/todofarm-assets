@@ -1,6 +1,6 @@
 /**
  * Mark a slot finished: validate it, close its issue, refresh the tracker.
- * Run: npm run done [slot-id]      (no id: the one passing file with an open issue)
+ * Run: tf done [slot-id]      (no id: the one passing file with an open issue)
  * Also imported by scaffold, which asks "did you finish X?" before moving on.
  */
 import { readFileSync, existsSync } from 'node:fs';
@@ -44,7 +44,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     let open; try { open = await openIssues(); } catch (e) { console.error('cannot reach GitHub: ' + e.message.split('\n')[0]); process.exit(1); }
     const ready = state.filter(x => x.st === 'done' && open.has(x.s.id)).map(x => x.s.id);
     if (!ready.length) { console.log('Nothing passing with an open issue. Draw something first.'); process.exit(0); }
-    if (ready.length > 1) { console.log('More than one finished slot. Say which:\n' + ready.map(r => `  npm run done ${r}`).join('\n')); process.exit(1); }
+    if (ready.length > 1) { console.log('More than one finished slot. Say which:\n' + ready.map(r => `  tf done ${r}`).join('\n')); process.exit(1); }
     id = ready[0]; console.log(`finishing: ${id}\n`);
   }
   process.exit((await finish(id)) ? 0 : 1);

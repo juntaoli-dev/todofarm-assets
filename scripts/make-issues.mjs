@@ -49,14 +49,14 @@ for (const s of slots) {
     '',
     '### To do this one', '',
     '```bash',
-    `npm run scaffold ${s.id}   # makes the canvas at the right size and opens it`,
-    'npm run watch              # leave running; every save gets checked',
+    `tf scaffold ${s.id}   # makes the canvas at the right size and opens it`,
+    'tf watch              # leave running; every save gets checked',
     '```',
     '',
-    'Close this issue when `npm run watch` says **PASS** and the file is committed.',
+    'Close this issue when `tf watch` says **PASS** and the file is committed.',
     ...(s.sketch ? ['', '### Sketch', '', 'A picture of the brief, not the art. `# outline  - shadow  o mid  + light  = accent  . transparent`', '',
       '```', ...s.sketch.map(r => r.split('').join(' ')), '```',
-      ...(s.sketchNote ? ['', s.sketchNote] : []), '', `\`npm run sketch ${s.id}\` renders it as a PNG.`] : []),
+      ...(s.sketchNote ? ['', s.sketchNote] : []), '', `\`tf sketch ${s.id}\` renders it as a PNG.`] : []),
   ].join('\n');
 
   if (dry) { console.log(`would ${existing.has(title) ? 'update' : 'create'}: ${title}`); continue; }
@@ -89,9 +89,9 @@ const trackBody = [
   '## Blocks the first playable build', '', list('v0'), '',
   '## After that', '', list('v1'), '',
   '---', '',
-  'Start with `npm run next`, which always tells you what to draw and at what size.',
+  'Start with `tf next`, which always tells you what to draw and at what size.',
   '',
-  '_Boxes are set from issue state. Run `npm run issues` after closing one to refresh them._',
+  '_Boxes are set from issue state. Run `tf issues` after closing one to refresh them._',
 ].join('\n');
 
 if (existing.has(trackTitle)) {

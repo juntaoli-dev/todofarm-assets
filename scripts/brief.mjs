@@ -1,9 +1,9 @@
 /**
  * Print a slot's brief and spec. Read-only, no side effects.
- * Run: npm run brief                  the one you are working on right now
- *      npm run brief <slot-id>        one slot, full brief
- *      npm run brief grass            any slot whose id contains "grass"
- *      npm run brief all              every slot, one line each
+ * Run: tf brief                  the one you are working on right now
+ *      tf brief <slot-id>        one slot, full brief
+ *      tf brief grass            any slot whose id contains "grass"
+ *      tf brief all              every slot, one line each
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { canvasOf } from '../lib/validate.mjs';
@@ -33,7 +33,7 @@ if (!q) {
 } else {
   hits = slots.filter(s => s.id.toLowerCase().includes(q));
 }
-if (!hits.length) { console.error(`no slot matches "${q}". Run: npm run brief all`); process.exit(1); }
+if (!hits.length) { console.error(`no slot matches "${q}". Run: tf brief all`); process.exit(1); }
 
 if (hits.length > 1 || !q) {
   for (const s of hits) {
@@ -41,11 +41,11 @@ if (hits.length > 1 || !q) {
     const drawn = existsSync(`art/${s.id}@1x.png`) ? D(' drawn') : '';
     console.log(`${s.blocks === 'v0' ? R('v0') : D('v1')}  ${B(s.id.padEnd(30))} ${D(`${d.w}x${d.h}`)}${drawn}`);
   }
-  if (q) console.log(D(`\n${hits.length} matches. Narrow it: npm run brief <exact-id>`));
+  if (q) console.log(D(`\n${hits.length} matches. Narrow it: tf brief <exact-id>`));
   process.exit(0);
 }
 
 const s = hits[0];
 printSlot(s, classes);
-console.log(D(`\n  npm run sketch ${s.id}     renders the sketch as a PNG and opens it`));
-console.log(D(`  npm run scaffold ${s.id}`));
+console.log(D(`\n  tf sketch ${s.id}     renders the sketch as a PNG and opens it`));
+console.log(D(`  tf scaffold ${s.id}`));

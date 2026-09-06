@@ -31,13 +31,13 @@ The name is not decoration. The tooling matches the filename against `slots/<slo
 | **PNG-32** | RGBA, 8 bits per channel. Not indexed, not greyscale. Just export as PNG. |
 | **Binary alpha** | Every pixel is either fully solid or fully see-through. **Turn anti-aliasing off.** Soft edges look blurry once the game scales the sprite up 3&times;. |
 | **No Background layer** | In Aseprite, a visible Background layer makes the export drop its alpha channel entirely. See [ASEPRITE.md](ASEPRITE.md). This is the single most common first failure. |
-| **Exact canvas** | Not "about 16 wide". Exactly the size the slot says. `npm run scaffold` makes the canvas for you so you cannot get this wrong. |
+| **Exact canvas** | Not "about 16 wide". Exactly the size the slot says. `tf scaffold` makes the canvas for you so you cannot get this wrong. |
 | **Colour cap** | Between 8 and 24 colours depending on the slot. This is a feature, not a restriction, and it is most of what makes pixel art look professional. |
 | **Transparent means empty** | Erase properly. Do not paint white behind a sprite. |
 | **No `#FF00FF` magenta** | That exact pink is reserved as the "art is missing" marker. |
 | **No colour profile** | Do not tick "embed colour profile" on export. It shifts your colours between your editor and the game. |
 
-You do not have to memorise any of this. `npm run watch` tells you the moment you break one, **and how to fix it**:
+You do not have to memorise any of this. `tf watch` tells you the moment you break one, **and how to fix it**:
 
 ```
 FAIL  prop1x1.chest.wooden.closed
@@ -114,14 +114,16 @@ This means you never have to draw ahead of the code, or code ahead of the drawin
 ## The four commands
 
 ```bash
-npm run scaffold             # next slot: correctly sized empty PNG, opened for you
-npm run watch                # leave running beside your editor; every save is checked
-npm run done                 # validates, closes the issue, ticks the tracker
-npm run next                 # if you want to see the queue before committing to it
-npm run brief                # the brief and an ASCII sketch of what you are working on
-npm run sketch               # that sketch as a PNG, opened beside your canvas
-npm run brief <slot-id>      # or any slot, or `all` for the list
+tf scaffold        # next slot: correctly sized empty PNG, opened for you
+tf watch           # leave running beside your editor; every save is checked
+tf done            # validates, closes the issue, ticks the tracker
+tf brief           # what it is, the brief, and the sketch, for what you are on
+tf sketch          # the same, plus the sketch as a PNG opened beside your canvas
+tf next            # the ranked queue
+tf help            # everything else
 ```
+
+`tf` works from any directory once `npm run setup` has run. Every command also exists as `npm run <name>` if you prefer.
 
 No slot name needed. **`scaffold` is the front door:** it first asks *"did you finish X?"* about anything you drew that passes but is not closed yet. Say **y** and it marks it done and opens the next canvas. Say **n** and it does nothing, so you cannot accidentally move on from unfinished work. Pass a slot id to either command if you want to jump around.
 
@@ -156,7 +158,7 @@ Nothing else to install. There are no dependencies.
 
 ```bash
 git add art/ && git commit -m "add the coin" && git push
-npm run done
+tf done
 ```
 
 The pre-commit hook validates the art and refreshes this README for you. To publish a build the game can fetch:
@@ -169,7 +171,7 @@ git tag assets-v1 && git push --tags
 
 ## The sketches are the developer talking
 
-Every un-started slot carries an ASCII sketch. It is a picture of the brief, drawn by the person writing the code, so you know the shape, the proportions and where the anchor is before you spend an hour. It is not art and it is never committed: `npm run sketch` renders it into `sketches/`, which is gitignored, and you redraw it your way in `art/`.
+Every un-started slot carries an ASCII sketch. It is a picture of the brief, drawn by the person writing the code, so you know the shape, the proportions and where the anchor is before you spend an hour. It is not art and it is never committed: `tf sketch` renders it into `sketches/`, which is gitignored, and you redraw it your way in `art/`.
 
 ```
 # outline   - shadow   o mid   + light   = accent   . transparent
@@ -206,7 +208,7 @@ Draw in **Indexed** colour mode, then switch to **Sprite &rarr; Color Mode &rarr
 
 Indexed mode stores one palette slot per pixel, so a half-transparent pixel is *structurally impossible*. It makes the anti-aliasing rule enforce itself while you work. But an Indexed sprite exports as a palette PNG, which we reject, so the conversion before export is not optional.
 
-If that feels like one step too many to remember, just work in RGB. It is the safe default and `npm run watch` will catch you.
+If that feels like one step too many to remember, just work in RGB. It is the safe default and `tf watch` will catch you.
 
 ### The palette
 

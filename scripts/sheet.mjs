@@ -3,7 +3,7 @@
  * A solo artist has no art director, so the substitute is seeing everything at
  * once: style drift is obvious on a contact sheet and invisible file by file.
  *
- * Run: npm run sheet        (opens sheet.html with your default browser)
+ * Run: tf sheet        (opens sheet.html with your default browser)
  */
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { validate, canvasOf, isUntouched } from '../lib/validate.mjs';

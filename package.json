@@ -20,5 +20,8 @@
     "done": "node scripts/done.mjs",
     "brief": "node scripts/brief.mjs",
     "sketch": "node scripts/sketch.mjs"
+  },
+  "bin": {
+    "tf": "bin/tf.mjs"
   }
 }

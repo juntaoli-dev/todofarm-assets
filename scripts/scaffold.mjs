@@ -5,7 +5,7 @@
  * whether anything you were working on is finished, marks it done if you say
  * yes, and only then scaffolds the next slot. Say no and it does nothing.
  *
- * Run: npm run scaffold [slot-id] [--no-open]
+ * Run: tf scaffold [slot-id] [--no-open]
  */
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline/promises';
@@ -51,7 +51,7 @@ if (!id) {
     for (const w of x.why) console.log(D('  ' + w));
     const yes = await ask(`Leave it and move on anyway? [y/N] `);
     if (yes === null) break;
-    if (!yes) { console.log(`OK. Back to ${x.s.id}: npm run watch`); process.exit(0); }
+    if (!yes) { console.log(`OK. Back to ${x.s.id}: tf watch`); process.exit(0); }
   }
 
   const { queue } = await loadQueue();
@@ -60,7 +60,7 @@ if (!id) {
   console.log(`next up: ${B(id)}\n`);
 }
 
-if (!existsSync(`slots/${id}.json`)) { console.error(`no slot "${id}". Run: npm run next`); process.exit(1); }
+if (!existsSync(`slots/${id}.json`)) { console.error(`no slot "${id}". Run: tf next`); process.exit(1); }
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
 const slot = JSON.parse(readFileSync(`slots/${id}.json`, 'utf8'));
 const cls = classes[slot.class], { w, h } = canvasOf(cls);
@@ -74,6 +74,6 @@ else {
 console.log(`  max ${cls.colors} colours · anchor ${cls.anchor}` +
   (cls.frames > 1 ? ` · ${cls.frames} frames ${cls.strip ? 'stacked top to bottom' : `(${cls.grid}, ${w / 4}x${h / 4} cells)`}` : ''));
 console.log(`\n  ${slot.brief}\n`);
-if (slot.sketch) console.log('  npm run sketch    opens a PNG of what this should roughly look like\n');
-console.log('Leave `npm run watch` running and it will check every time you save.');
+if (slot.sketch) console.log('  tf sketch    opens a PNG of what this should roughly look like\n');
+console.log('Leave `tf watch` running and it will check every time you save.');
 if (!process.argv.includes('--no-open')) openFile(file);

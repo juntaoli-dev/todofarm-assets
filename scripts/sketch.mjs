@@ -3,9 +3,9 @@
  * The sketch is a picture of the brief, not the art: it goes to sketches/,
  * which is gitignored, and never into art/.
  *
- * Run: npm run sketch            the slot you are working on
- *      npm run sketch <slot-id>  one slot
- *      npm run sketch all        every slot that has a sketch
+ * Run: tf sketch            the slot you are working on
+ *      tf sketch <slot-id>  one slot
+ *      tf sketch all        every slot that has a sketch
  */
 import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { encodePNG } from '../lib/png.mjs';

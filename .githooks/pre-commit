@@ -1,7 +1,7 @@
 #!/bin/sh
 # Keeps the README status table true and stops broken art being committed.
 #
-# The table is generated, so a human being expected to remember `npm run status`
+# The table is generated, so a human being expected to remember `tf status`
 # was never going to hold. This runs it and re-stages the README automatically.
 
 set -e

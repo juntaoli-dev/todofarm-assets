@@ -41,5 +41,5 @@ for (const { s, st } of queue.slice(0, want)) {
   console.log(`  ${c.frames > 1 ? c.frames + ' frames' + (c.strip ? ', stacked top to bottom' : '') + '  ' : ''}` +
     `max ${c.colors} colours  anchor ${c.anchor}`);
   console.log(D('  ' + s.brief.replace(/(.{78}\s)/g, '$1\n  ')));
-  console.log(D(`  npm run scaffold${queue[0]?.s.id === s.id ? '' : ' ' + s.id}\n`));
+  console.log(D(`  tf scaffold${queue[0]?.s.id === s.id ? '' : ' ' + s.id}\n`));
 }

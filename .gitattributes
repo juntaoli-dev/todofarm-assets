@@ -5,3 +5,4 @@
 *.md          text eol=lf
 art/*.png     binary
 palette/*     binary
+bin/*         text eol=lf
