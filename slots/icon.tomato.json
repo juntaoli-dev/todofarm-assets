@@ -2,7 +2,7 @@
   "id": "icon.tomato",
   "class": "icon",
   "status": "open",
-  "blocks": "v1",
-  "brief": "The tomato, one completed furnace interval. Sits in the HUD beside the count.",
+  "blocks": "v0",
+  "brief": "The tomato: one completed focus interval at the desk. Sits in the HUD beside the count and on every journal entry that earned some.",
   "submissions": []
 }

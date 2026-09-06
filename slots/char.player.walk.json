@@ -3,6 +3,6 @@
   "class": "char",
   "status": "open",
   "blocks": "v0",
-  "brief": "Player walk sheet. Row order down, up, left, right. Frame order idle, step left, idle, step right. Feet land on the anchor in every frame or the character bobs.",
+  "brief": "The mayor, and the player. Row order down, up, left, right. Frame order idle, step left, idle, step right. A sash or a chain of office, otherwise plain. Feet land on the anchor in every frame or the character bobs.",
   "submissions": []
 }

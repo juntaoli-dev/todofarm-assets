@@ -1,0 +1,8 @@
+{
+  "id": "prop2x3.bookshelf",
+  "class": "prop2x3",
+  "status": "open",
+  "blocks": "v0",
+  "brief": "The ledger shelf. Holds up to nine ledgers, which the game draws on top of it from the ledger icons, so leave the shelf faces empty and evenly spaced: three shelves, room for three spines each.",
+  "submissions": []
+}

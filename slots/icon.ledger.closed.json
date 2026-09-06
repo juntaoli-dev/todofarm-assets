@@ -1,0 +1,8 @@
+{
+  "id": "icon.ledger.closed",
+  "class": "icon",
+  "status": "open",
+  "blocks": "v0",
+  "brief": "A closed ledger spine, seen from the front on the shelf. One per category. The game recolours it per ledger, so draw it in one mid tone plus shading and no fixed hue. Nine of these sit side by side, so silhouette first.",
+  "submissions": []
+}

@@ -1,0 +1,8 @@
+{
+  "id": "tile.wall.plaster",
+  "class": "tile",
+  "status": "open",
+  "blocks": "v0",
+  "brief": "Interior wall, plaster over a dark wood base. Tiles horizontally. The bottom two pixel rows are the skirting, so the seam against the floor reads as trim rather than a hard edge.",
+  "submissions": []
+}

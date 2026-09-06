@@ -1,8 +1,0 @@
-{
-  "id": "char.craftsman.walk",
-  "class": "char",
-  "status": "open",
-  "blocks": "v0",
-  "brief": "The craftsman. Leather apron, headband, no hat. He must read as a maker rather than a farmer, since the farmer is the player.",
-  "submissions": []
-}

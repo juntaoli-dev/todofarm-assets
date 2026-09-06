@@ -1,0 +1,8 @@
+{
+  "id": "prop1x2.door",
+  "class": "prop1x2",
+  "status": "open",
+  "blocks": "v1",
+  "brief": "An interior door in the hall wall, leading to rooms you have not bought yet. Closed. Drawn on the wall tile, so the frame must sit against the plaster cleanly.",
+  "submissions": []
+}

@@ -1,6 +1,8 @@
 # todoFarm assets
 
-The art library for **todoFarm**, a todo list you walk around in. You dump a task, a silent classifier files it into a chest, and a craftsman turns what you finish into things that decorate your farm.
+The art library for **todoFarm**, a life OS you walk around in. You are the mayor of a small town. Every task is a journal entry; a silent clerk files it into the right ledger on your shelf; time at your desk earns tokens; tokens buy your leisure, your decorations, and your next room.
+
+It starts with one room, the Mayor's Hall. Everything beyond it is content you build here first and the player buys later.
 
 Every sprite here is **hand-drawn**. No AI-generated art, ever.
 
@@ -52,30 +54,42 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**2 of 20 drawn. 10 still block the first playable build.**
+**2 of 32 drawn. 13 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
-| &#9744; | `char.craftsman.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
+| &#9744; | `char.clerk.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9744; | `char.player.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9745; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | 6/12 colours |
-| &#9744; | `prop1x1.chest.iron.locked` | **16&times;16** | 1 | 20 | **yes** | not started |
-| &#9744; | `prop1x1.chest.wooden.closed` | **16&times;16** | 1 | 20 | **yes** | not started |
-| &#9744; | `prop1x1.chest.wooden.open` | **16&times;16** | 1 | 20 | **yes** | not started |
-| &#9744; | `prop2x2.furnace.cold` | **32&times;32** | 1 | 24 | **yes** | not started |
-| &#9744; | `prop2x2.furnace.lit` | **32&times;32** | 1 | 24 | **yes** | not started |
-| &#9745; | `tile.terrain.dirt_path` | **16&times;16** | 1 | 16 | **yes** | 2/16 colours |
-| &#9744; | `tile.terrain.grass_a` | **16&times;16** | 1 | 16 | **yes** | canvas ready, empty |
-| &#9744; | `tile.terrain.soil_tilled` | **16&times;16** | 1 | 16 | **yes** | not started |
+| &#9744; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9744; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9744; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9744; | `prop1x1.mailtray` | **16&times;16** | 1 | 20 | **yes** | not started |
+| &#9744; | `prop2x2.desk.idle` | **32&times;32** | 1 | 24 | **yes** | not started |
+| &#9744; | `prop2x3.bookshelf` | **32&times;48** | 1 | 24 | **yes** | not started |
+| &#9744; | `tile.floor.wood` | **16&times;16** | 1 | 16 | **yes** | not started |
+| &#9744; | `tile.wall.plaster` | **16&times;16** | 1 | 16 | **yes** | not started |
+| &#9744; | `ui9.panel.parchment` | **24&times;24** | 1 | 8 | **yes** | not started |
 | &#9744; | `ui9.panel.wood` | **24&times;24** | 1 | 8 | **yes** | not started |
 | &#9744; | `crop.wheat.stages` | **16&times;64** | 4 stacked | 16 | no | not started |
-| &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | no | not started |
+| &#9744; | `icon.letter` | **16&times;16** | 1 | 12 | no | not started |
+| &#9744; | `icon.stamp` | **16&times;16** | 1 | 12 | no | not started |
+| &#9744; | `prop1x1.deco.lamp` | **16&times;16** | 1 | 20 | no | not started |
+| &#9744; | `prop1x1.deco.plant` | **16&times;16** | 1 | 20 | no | not started |
 | &#9744; | `prop1x1.fence.wood` | **16&times;16** | 1 | 20 | no | not started |
+| &#9744; | `prop1x1.window` | **16&times;16** | 1 | 20 | no | not started |
+| &#9744; | `prop1x2.door` | **16&times;32** | 1 | 20 | no | not started |
 | &#9744; | `prop1x2.tree.oak` | **16&times;32** | 1 | 20 | no | not started |
+| &#9744; | `prop2x2.couch` | **32&times;32** | 1 | 24 | no | not started |
+| &#9744; | `prop2x2.desk.working` | **32&times;32** | 1 | 24 | no | not started |
 | &#9744; | `prop2x2.furniture.oak_table` | **32&times;32** | 1 | 24 | no | not started |
+| &#9744; | `prop2x2.rug` | **32&times;32** | 1 | 24 | no | not started |
 | &#9744; | `tile.anim.water` | **16&times;64** | 4 stacked | 16 | no | not started |
+| &#9745; | `tile.terrain.dirt_path` | **16&times;16** | 1 | 16 | no | 2/16 colours |
+| &#9744; | `tile.terrain.grass_a` | **16&times;16** | 1 | 16 | no | not started |
 | &#9744; | `tile.terrain.grass_b` | **16&times;16** | 1 | 16 | no | not started |
-| &#9744; | `ui9.panel.parchment` | **24&times;24** | 1 | 8 | no | not started |
+| &#9744; | `tile.terrain.soil_tilled` | **16&times;16** | 1 | 16 | no | not started |
 <!-- STATUS:END -->
 
 **The tickable version lives in the issues**, because a checklist in a README renders as boxes but is not clickable. GitHub only makes them work inside issues.

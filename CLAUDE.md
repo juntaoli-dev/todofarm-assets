@@ -1,6 +1,6 @@
 # todoFarm assets: instructions for Claude
 
-This is the art library for todoFarm. One person draws everything by hand in Aseprite. Your job in this repo is to keep the loop tight, never to draw.
+This is the art library for todoFarm, a life OS in the shape of a cozy pixel town. The player is the mayor; tasks are journal entries; a mute clerk files them into ledgers; desk time earns tokens; tokens buy leisure, decorations and rooms. It starts with one room, the Mayor's Hall. One person draws everything by hand in Aseprite. Your job in this repo is to keep the loop tight, never to draw.
 
 ## Rules that are not negotiable
 

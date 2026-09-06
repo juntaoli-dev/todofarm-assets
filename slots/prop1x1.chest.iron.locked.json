@@ -1,8 +1,0 @@
-{
-  "id": "prop1x1.chest.iron.locked",
-  "class": "prop1x1",
-  "status": "open",
-  "blocks": "v0",
-  "brief": "A chest the user made by hand, which the classifier may never modify. Iron banded, visible padlock. Must be distinguishable from the wooden chest across the farm, not just up close.",
-  "submissions": []
-}

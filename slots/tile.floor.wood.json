@@ -1,0 +1,8 @@
+{
+  "id": "tile.floor.wood",
+  "class": "tile",
+  "status": "open",
+  "blocks": "v0",
+  "brief": "Interior floorboards for the Mayor's Hall. Planks run horizontally. Must tile seamlessly on all four edges. This is most of the screen indoors, so keep the grain quiet; boards that read as stripes at 3x zoom get exhausting.",
+  "submissions": []
+}

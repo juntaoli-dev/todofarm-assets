@@ -2,7 +2,7 @@
   "id": "tile.terrain.grass_a",
   "class": "tile",
   "status": "open",
-  "blocks": "v0",
-  "brief": "Base grass. Must tile seamlessly against itself on all four edges. Keep it quiet: this covers most of the screen, so texture that reads as noise at 3x zoom will be exhausting.",
+  "blocks": "v1",
+  "brief": "Exterior grass for the farm, the first room you can buy next to the hall. Must tile seamlessly on all four edges. Keep it quiet: it covers most of that screen, and texture that reads as noise at 3x zoom is exhausting.",
   "submissions": []
 }

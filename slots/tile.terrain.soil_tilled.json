@@ -2,7 +2,7 @@
   "id": "tile.terrain.soil_tilled",
   "class": "tile",
   "status": "open",
-  "blocks": "v0",
+  "blocks": "v1",
   "brief": "Tilled soil, where crops sit. Furrows run horizontally. Must tile against itself and against grass.",
   "submissions": []
 }
