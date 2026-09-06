@@ -13,7 +13,7 @@ const { classes, state, queue } = await loadQueue();
 
 const n = k => state.filter(x => x.st === k).length;
 const v0left = state.filter(x => x.s.blocks === 'v0' && x.st !== 'done').length;
-console.log(`\n${B('todoFarm art')}   ${G(n('done') + ' done')}  ${Y(n('started') + ' started')}  ` +
+console.log(`\n${B('Mayorly art')}   ${G(n('done') + ' done')}  ${Y(n('started') + ' started')}  ` +
   `${n('todo')} todo  ${n('broken') ? R(n('broken') + ' broken') : ''}`);
 console.log(D(`${v0left} of 12 first-playable slots still outstanding\n`));
 

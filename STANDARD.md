@@ -1,4 +1,4 @@
-# todoFarm art standard v0.1
+# Mayorly art standard v0.1
 
 *Canonical copy. The design repo holds the research this was derived from.*
 

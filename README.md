@@ -1,6 +1,6 @@
-# todoFarm assets
+# Mayorly assets
 
-The art library for **todoFarm**, a life OS you walk around in. You are the mayor of a small town. Every task is a journal entry; a silent clerk files it into the right ledger on your shelf; time at your desk earns tokens; tokens buy your leisure, your decorations, and your next room.
+The art library for **Mayorly**, a life OS you walk around in. You are the mayor of a small town. Every task is a journal entry; a silent clerk files it into the right ledger on your shelf; time at your desk earns tokens; tokens buy your leisure, your decorations, and your next room.
 
 It starts with one room, the Mayor's Hall. Everything beyond it is content you build here first and the player buys later.
 
@@ -54,7 +54,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**5 of 32 drawn. 11 still block the first playable build.**
+**6 of 32 drawn. 10 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
@@ -63,7 +63,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9745; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | 6/12 colours |
 | &#9745; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
 | &#9745; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | 5/12 colours |
-| &#9744; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9745; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | 1/12 colours |
 | &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `prop1x1.mailtray` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop2x2.desk.idle` | **32&times;32** | 1 | 24 | **yes** | not started |
@@ -94,7 +94,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 
 **The tickable version lives in the issues**, because a checklist in a README renders as boxes but is not clickable. GitHub only makes them work inside issues.
 
-&rarr; **[First playable: the sprites that make the Mayor's Hall](https://github.com/juntaoli-dev/todofarm-assets/issues/40)**
+&rarr; **[First playable: the sprites that make the Mayor's Hall](https://github.com/juntaoli-dev/mayorly-assets/issues/40)**
 
 One issue per sprite, with its spec and brief. Close an issue and the tracking checklist ticks itself.
 
@@ -285,7 +285,7 @@ Fetch **one manifest and one archive** per build, from a GitHub Release. Do not 
 
 ## For other artists, later
 
-The [workshop](https://github.com/juntaoli-dev/todofarm-workshop) is a web app that lets someone **without** repo access claim a slot, drop a PNG, and have a pull request opened for them. It is built and working, and deliberately **switched off**, because for a solo artist who already has write access it is pure overhead.
+The [workshop](https://github.com/juntaoli-dev/mayorly-workshop) is a web app that lets someone **without** repo access claim a slot, drop a PNG, and have a pull request opened for them. It is built and working, and deliberately **switched off**, because for a solo artist who already has write access it is pure overhead.
 
 Turn it on when someone else wants to draw.
 

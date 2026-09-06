@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { homedir } from 'node:os';
 
 const ok = s => console.log('  ok   ' + s), warn = s => console.log('  !!   ' + s);
-console.log('todoFarm assets setup\n');
+console.log('Mayorly assets setup\n');
 
 // 1. git hooks: validate art and refresh the README on every commit
 execSync('git config core.hooksPath .githooks');

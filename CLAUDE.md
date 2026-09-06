@@ -1,11 +1,11 @@
-# todoFarm assets: instructions for Claude
+# Mayorly assets: instructions for Claude
 
-This is the art library for todoFarm, a life OS in the shape of a cozy pixel town. The player is the mayor; tasks are journal entries; a mute clerk files them into ledgers; desk time earns tokens; tokens buy leisure, decorations and rooms. It starts with one room, the Mayor's Hall. One person draws everything by hand in Aseprite. Your job in this repo is to keep the loop tight, never to draw.
+This is the art library for Mayorly, a life OS in the shape of a cozy pixel town. The player is the mayor; tasks are journal entries; a mute clerk files them into ledgers; desk time earns tokens; tokens buy leisure, decorations and rooms. It starts with one room, the Mayor's Hall. One person draws everything by hand in Aseprite. Your job in this repo is to keep the loop tight, never to draw.
 
 ## Rules that are not negotiable
 
 - **No AI-generated art. Ever.** Do not generate, upscale, "clean up", or otherwise produce pixel art. Placeholders in `placeholders/` are deliberately ugly magenta checkerboards and that is the only synthetic art allowed.
-- **`lib/validate.mjs` is the standard.** It is the single source of truth and it is vendored, byte for byte, into the `todofarm-workshop` repo. If you change it here, run `npm run sync` in the workshop repo. Never edit the workshop's copy directly.
+- **`lib/validate.mjs` is the standard.** It is the single source of truth and it is vendored, byte for byte, into the `mayorly-workshop` repo. If you change it here, run `npm run sync` in the workshop repo. Never edit the workshop's copy directly.
 - **Do not commit `manifest.json` or `placeholders/`.** Both are generated. The manifest is built at publish time and attached to a GitHub Release; committing it deadlocks CI.
 - **Do not add dependencies.** Everything here is Node 18+ standard library on purpose, so it runs identically in a browser, in Node, and in CI.
 

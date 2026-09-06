@@ -39,7 +39,7 @@ for (const s of slots) {
   </figure>`);
 }
 
-writeFileSync('sheet.html', `<!doctype html><meta charset="utf-8"><title>todoFarm contact sheet</title>
+writeFileSync('sheet.html', `<!doctype html><meta charset="utf-8"><title>Mayorly contact sheet</title>
 <style>
 :root{--bg:#14110E;--pan:#1C1815;--line:#3A332B;--tx:#EDE4D6;--tx2:#A89C88;--tx3:#71685A;
   --ok:#7FB85C;--bad:#D4614A;--warn:#DE9640;--ph:#B08BD8}
@@ -61,7 +61,7 @@ figcaption b{font:500 11.5px/1.3 ui-monospace,monospace;word-break:break-all}
 figcaption span{color:var(--tx3);font-size:11px}
 figcaption em{color:var(--bad);font-style:normal;font-size:10px;letter-spacing:.4px;text-transform:uppercase}
 </style>
-<h1>todoFarm contact sheet</h1>
+<h1>Mayorly contact sheet</h1>
 <p>Green is done, orange started, red failing, purple placeholder. Style drift is obvious here and invisible file by file.</p>
 <div class="grid">${cards.join('')}</div>`);
 console.log(`sheet.html  ${slots.length} slots`);
