@@ -94,7 +94,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 
 **The tickable version lives in the issues**, because a checklist in a README renders as boxes but is not clickable. GitHub only makes them work inside issues.
 
-&rarr; **[First playable: the 12 sprites that block everything](../../issues)**
+&rarr; **[First playable: the sprites that make the Mayor's Hall](https://github.com/juntaoli-dev/todofarm-assets/issues/40)**
 
 One issue per sprite, with its spec and brief. Close an issue and the tracking checklist ticks itself.
 
