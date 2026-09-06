@@ -63,7 +63,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9745; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | 6/12 colours |
 | &#9745; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
 | &#9745; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | 5/12 colours |
-| &#9745; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | 1/12 colours |
+| &#9745; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
 | &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `prop1x1.mailtray` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop2x2.desk.idle` | **32&times;32** | 1 | 24 | **yes** | not started |
