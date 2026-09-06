@@ -31,5 +31,5 @@
     "#++++++++++++++++++++++#",
     "########################"
   ],
-  "sketchNote": "Outline, a light inner border, then a plain fill. The four = dots mark the corners of the 8x8 centre that stretches; keep that region flat."
+  "sketchNote": "A nine-slice: the game cuts this 24x24 along the 8px lines into four corners (never stretch), four edges (stretch one way) and a centre (stretches both ways), then builds HUD chips and menus of any size from it. Outline, a light inner border, then a flat fill. The four = dots are MARKERS showing the corners of the 8x8 centre that stretches the most. Do not paint them. Keep everything inside that square one flat colour or it smears when stretched."
 }
