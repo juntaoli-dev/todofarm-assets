@@ -70,7 +70,9 @@ if (dry) process.exit(0);
 // real issue state and re-run this whenever you close one.
 const list = b => made.filter(m => m.s.blocks === b)
   .map(m => `- [${closed.has(m.n) ? 'x' : ' '}] #${m.n} — ${m.s.brief.split('.')[0]}.`).join('\n');
-const trackTitle = 'First playable: the 12 sprites that block everything';
+// Count-free on purpose: this string is the idempotency key. Change it and the
+// next run opens a second tracker.
+const trackTitle = "First playable: the sprites that make the Mayor's Hall";
 const trackBody = [
   'These tick themselves as each issue closes. Nothing else is needed to get a playable build,',
   'and the game already runs on magenta placeholders until then.', '',
