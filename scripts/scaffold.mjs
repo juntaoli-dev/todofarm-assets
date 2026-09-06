@@ -9,7 +9,8 @@
  */
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline/promises';
-import { blank } from '../lib/png.mjs';
+import { blankIndexed } from '../lib/png.mjs';
+import { loadPalette } from '../lib/validate.mjs';
 import { canvasOf } from '../lib/validate.mjs';
 import { loadQueue } from '../lib/queue.mjs';
 import { openFile } from '../lib/open.mjs';
@@ -69,7 +70,13 @@ const cls = classes[slot.class], { w, h } = canvasOf(cls);
 const file = `art/${id}@1x.png`;
 
 if (existsSync(file)) console.log(`${file} already exists, leaving it alone.`);
-else { writeFileSync(file, await blank(w, h)); console.log(`${file}  ${w}x${h}, transparent, created`); }
+else {
+  // Indexed, with Resurrect 64 baked in: Aseprite opens it in Indexed mode with
+  // the palette loaded. No "Load Palette" step, on any machine.
+  const pal = [...loadPalette(readFileSync('palette/resurrect-64.hex', 'utf8'))];
+  writeFileSync(file, await blankIndexed(w, h, pal));
+  console.log(`${file}  ${w}x${h}, transparent, indexed with the palette built in`);
+}
 
 // The brief and the sketch, right here, so you can start without another command.
 printSlot(slot, classes, { grid: compose(slot, classes) });

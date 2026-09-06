@@ -40,7 +40,7 @@ Two things Minecraft does that we explicitly do **not** copy: tolerance for off-
 
 A submission failing any of these is rejected before a human sees it.
 
-1. **PNG-32 only.** Indexed PNG and JPG are rejected on sight.
+1. **PNG only, RGBA or indexed.** Indexed with a transparent index is preferred: the scaffold ships that way with the master palette baked in, so off-palette colours cannot exist. RGB without alpha (a visible Background layer) and JPG are rejected.
 2. **Binary alpha.** Every pixel is fully opaque or fully transparent. No soft edges, ever. Semi-transparent pixels break atlas bleeding and read as blur at 3x zoom.
 3. **Exact canvas.** Not "about 16 wide". Exactly the size the slot names.
 4. **Colour cap per class.** Counted as distinct RGB among **fully opaque pixels only**. A transparent pixel is not a colour, and the same RGB at two alpha values is not two colours. This rule is written down because the identical file passes or fails depending on it.

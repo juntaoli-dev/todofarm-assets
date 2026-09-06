@@ -26,9 +26,11 @@ The name is not decoration. The tooling matches the filename against `slots/<slo
 
 **PNG. Only PNG.** JPG is rejected on sight, because it cannot hold a real alpha channel and it destroys hard pixel edges.
 
+**You should never have to think about format.** `tf scaffold` creates an **indexed PNG with the palette built in**, Aseprite opens it already in Indexed mode with Resurrect 64 loaded, you draw, you save. That is the whole thing, on any machine, with no Load Palette step.
+
 | rule | what it means when you are drawing |
 |---|---|
-| **PNG-32** | RGBA, 8 bits per channel. Not indexed, not greyscale. Just export as PNG. |
+| **Indexed or RGBA** | The scaffold is indexed with the palette baked in; keep it that way. RGBA also passes. RGB *without* alpha is rejected, which is what a visible Background layer produces. |
 | **Binary alpha** | Every pixel is either fully solid or fully see-through. **Turn anti-aliasing off.** Soft edges look blurry once the game scales the sprite up 3&times;. |
 | **No Background layer** | In Aseprite, a visible Background layer makes the export drop its alpha channel entirely. See [ASEPRITE.md](ASEPRITE.md). This is the single most common first failure. |
 | **Exact canvas** | Not "about 16 wide". Exactly the size the slot says. `tf scaffold` makes the canvas for you so you cannot get this wrong. |
@@ -64,7 +66,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9745; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
 | &#9745; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | 5/12 colours |
 | &#9745; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
-| &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | canvas ready, empty |
 | &#9744; | `prop1x1.mailtray` | **16&times;16** | 1 | 20 | **yes** | not started |
 | &#9744; | `prop2x2.desk.idle` | **32&times;32** | 1 | 24 | **yes** | not started |
 | &#9744; | `prop2x3.bookshelf` | **32&times;48** | 1 | 24 | **yes** | not started |

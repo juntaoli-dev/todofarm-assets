@@ -6,6 +6,7 @@
  * Run: node scripts/selftest.mjs
  */
 import { validate } from '../lib/validate.mjs';
+import { encodeIndexedPNG } from '../lib/png.mjs';
 
 const CRC = (() => {
   const t = [];
@@ -80,6 +81,14 @@ await t('a 4-frame strip passes',
   await png(16, 64, (x, y) => (y % 16) < 12 ? [232, 193, 112, 255] : [0, 0, 0, 0]), STRIP, true);
 await t('a strip with a blank frame is rejected',
   await png(16, 64, (x, y) => y < 48 && (y % 16) < 12 ? [232, 193, 112, 255] : [0, 0, 0, 0]), STRIP, false, 'frames.allDrawn');
+await t('an indexed png with a transparent index passes',
+  await encodeIndexedPNG(16, 16, [0x2e222f, 0x966c6c, 0xf9c22b], (x, y) => y < 10 ? 2 : 0), SPEC, true);
+await t('an indexed png with no transparent index warns but passes for opaque tiles',
+  await (async () => { const b = await encodeIndexedPNG(16, 16, [0x2e222f, 0x966c6c], () => 1);
+    /* strip the tRNS chunk to simulate a lost transparent colour */
+    const s = Buffer.from(b); const i = s.indexOf(Buffer.from('tRNS')); const len = s.readUInt32BE(i - 4);
+    return new Uint8Array(Buffer.concat([s.subarray(0, i - 4), s.subarray(i + 4 + len + 4)])); })(),
+  { ...SPEC, opaque: true }, true);
 await t('a non-png is rejected', new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9]), SPEC, false, 'png.signature');
 
 console.log(`\n${pass} passed, ${fail} failed`);

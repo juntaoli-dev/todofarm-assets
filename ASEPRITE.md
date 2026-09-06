@@ -14,13 +14,13 @@ If you already have one: **Layer menu &rarr; Background &rarr; Convert to Layer.
 
 When making a new sprite, set Background to **Transparent**.
 
-### 2. Export in RGB colour mode
+### 2. Stay in Indexed colour mode. The scaffold puts you there.
 
-**Sprite menu &rarr; Color Mode &rarr; RGB Color** before you export. An Indexed sprite exports as a palette PNG, which we reject.
+`tf scaffold` writes an **indexed PNG with Resurrect 64 built in**. Aseprite opens it in Indexed mode with all 64 swatches loaded and index 0 as the transparent colour. You never load a palette and you never convert anything. Draw, Cmd+S, done.
 
-**Drawing** in Indexed is actually the better habit, though. Indexed stores one palette slot per pixel, so a half-transparent pixel cannot be represented at all, which makes the no-anti-aliasing rule enforce itself while you work. Draw in Indexed, convert to RGB, export.
+Indexed is also the better way to draw: a pixel can only be one of the 64 swatches, so an off-palette colour or a half-transparent edge is impossible rather than merely discouraged.
 
-If remembering the conversion feels like one step too many, just work in RGB the whole time. `npm run watch` will catch anything.
+**Do not convert to RGB.** It is not needed for export any more, and it re-opens the door to off-palette colours. If you opened a file and the palette panel shows the default rainbow instead of Resurrect, it was not made by `tf scaffold`; run `tf scaffold <slot>` to get a proper one.
 
 ### 3. Colour profile: the default is already fine
 
