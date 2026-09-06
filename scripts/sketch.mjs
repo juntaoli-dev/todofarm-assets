@@ -12,11 +12,11 @@ import { encodePNG } from '../lib/png.mjs';
 import { canvasOf } from '../lib/validate.mjs';
 import { loadQueue } from '../lib/queue.mjs';
 import { openFile } from '../lib/open.mjs';
+import { printSlot } from '../lib/print.mjs';
 
 // Neutral ramp from Resurrect 64, so a sketch is obviously a sketch and still on palette.
 const INK = { '#': [0x2e,0x22,0x2f], '-': [0x62,0x55,0x65], 'o': [0x96,0x6c,0x6c],
               '+': [0xab,0x94,0x7a], '=': [0xf9,0xc2,0x2b] };
-export const LEGEND = '# outline   - shadow   o mid   + light   = accent   . transparent';
 
 const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
 
@@ -57,7 +57,9 @@ if (arg === 'all') {
   const s = load(arg);
   if (!s.sketch) { console.log(`${arg} has no sketch yet.`); process.exit(0); }
   const out = await renderSketch(s);
-  console.log(`${out}  (a picture of the brief, never commit it)\n`);
-  console.log(compose(s).join('\n')); console.log('\n' + LEGEND);
+  // Brief first, then the sketch placed on the real canvas, so you read what it
+  // is before you look at what it looks like.
+  printSlot(s, classes, { grid: compose(s) });
+  console.log(`\n  ${out}   a picture of the brief, never commit it`);
   if (!process.argv.includes('--no-open')) openFile(out);
 }
