@@ -13,6 +13,8 @@ import { blank } from '../lib/png.mjs';
 import { canvasOf } from '../lib/validate.mjs';
 import { loadQueue } from '../lib/queue.mjs';
 import { openFile } from '../lib/open.mjs';
+import { printSlot } from '../lib/print.mjs';
+import { compose, renderSketch } from '../lib/sketch.mjs';
 import { finish, openIssues } from './done.mjs';
 
 const B = s => `\x1b[1m${s}\x1b[0m`, D = s => `\x1b[2m${s}\x1b[0m`;
@@ -67,13 +69,11 @@ const cls = classes[slot.class], { w, h } = canvasOf(cls);
 const file = `art/${id}@1x.png`;
 
 if (existsSync(file)) console.log(`${file} already exists, leaving it alone.`);
-else {
-  writeFileSync(file, await blank(w, h));
-  console.log(`${file}  ${w}x${h}, transparent`);
-}
-console.log(`  max ${cls.colors} colours · anchor ${cls.anchor}` +
-  (cls.frames > 1 ? ` · ${cls.frames} frames ${cls.strip ? 'stacked top to bottom' : `(${cls.grid}, ${w / 4}x${h / 4} cells)`}` : ''));
-console.log(`\n  ${slot.brief}\n`);
-if (slot.sketch) console.log('  tf sketch    opens a PNG of what this should roughly look like\n');
-console.log('Leave `tf watch` running and it will check every time you save.');
-if (!process.argv.includes('--no-open')) openFile(file);
+else { writeFileSync(file, await blank(w, h)); console.log(`${file}  ${w}x${h}, transparent, created`); }
+
+// The brief and the sketch, right here, so you can start without another command.
+printSlot(slot, classes, { grid: compose(slot, classes) });
+const ref = slot.sketch ? await renderSketch(slot, classes) : null;
+console.log(ref ? `\n  ${ref}   reference, opened beside your canvas. never commit it.` : '');
+console.log('  leave `tf watch` running and every save is checked.');
+if (!process.argv.includes('--no-open')) { if (ref) openFile(ref); setTimeout(() => openFile(file), 400); }
