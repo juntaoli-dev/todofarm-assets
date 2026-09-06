@@ -6,6 +6,7 @@ import { execSync } from 'node:child_process';
 import { existsSync, mkdirSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
+import { findAseprite } from '../lib/open.mjs';
 
 const ok = s => console.log('  ok   ' + s), warn = s => console.log('  !!   ' + s);
 console.log('Mayorly assets setup\n');
@@ -28,6 +29,9 @@ try {
   copyFileSync('palette/resurrect-64.gpl', join(dir, 'resurrect-64.gpl'));
   ok(`Resurrect 64 installed into Aseprite presets\n       ${dir}\n       (in Aseprite: palette menu > Presets, press the refresh button or F5, no restart needed)`);
 } catch (e) { warn(`could not install the palette into Aseprite: ${e.message}\n       load palette/resurrect-64.gpl by hand instead`); }
+
+// 2b. Aseprite itself, so scaffold can open files in it rather than Preview
+const ase = findAseprite(); ase ? ok(`Aseprite found: ${ase}`) : warn('Aseprite not found; scaffold will open files with the default app. Set ASEPRITE=/path/to/Aseprite.app');
 
 // 3. `tf` on PATH, so the commands are `tf sketch` from anywhere
 try { execSync('npm link', { stdio: 'ignore' }); ok('`tf` is on your PATH (npm link). Try: tf brief'); }

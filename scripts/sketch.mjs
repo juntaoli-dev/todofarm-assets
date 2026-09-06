@@ -9,7 +9,7 @@
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { loadQueue } from '../lib/queue.mjs';
-import { openFile } from '../lib/open.mjs';
+import { openInAseprite } from '../lib/open.mjs';
 import { printSlot } from '../lib/print.mjs';
 import { compose, renderSketch } from '../lib/sketch.mjs';
 
@@ -30,5 +30,5 @@ if (arg === 'all') {
   // is before you look at what it looks like.
   printSlot(s, classes, { grid: compose(s, classes) });
   console.log(`\n  ${out}   a picture of the brief, never commit it`);
-  if (!process.argv.includes('--no-open')) openFile(out);
+  if (!process.argv.includes('--no-open')) openInAseprite([out]);
 }

@@ -13,7 +13,7 @@ import { blankIndexed } from '../lib/png.mjs';
 import { loadPalette } from '../lib/validate.mjs';
 import { canvasOf } from '../lib/validate.mjs';
 import { loadQueue } from '../lib/queue.mjs';
-import { openFile } from '../lib/open.mjs';
+import { openInAseprite, findAseprite } from '../lib/open.mjs';
 import { printSlot } from '../lib/print.mjs';
 import { compose, renderSketch } from '../lib/sketch.mjs';
 import { finish, openIssues } from './done.mjs';
@@ -81,6 +81,9 @@ else {
 // The brief and the sketch, right here, so you can start without another command.
 printSlot(slot, classes, { grid: compose(slot, classes) });
 const ref = slot.sketch ? await renderSketch(slot, classes) : null;
-console.log(ref ? `\n  ${ref}   reference, opened beside your canvas. never commit it.` : '');
+console.log(ref ? `\n  ${ref}   the reference. it opens as a second tab; your canvas is the active one.` : '');
 console.log('  leave `tf watch` running and every save is checked.');
-if (!process.argv.includes('--no-open')) { if (ref) openFile(ref); setTimeout(() => openFile(file), 400); }
+if (!process.argv.includes('--no-open')) {
+  const ok = openInAseprite(ref ? [ref, file] : [file]);
+  if (!ok) console.log('  (Aseprite not found; opened with the default app instead. Set ASEPRITE=/path/to/Aseprite.app)');
+}

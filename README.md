@@ -174,7 +174,7 @@ git tag assets-v1 && git push --tags
 
 ## The sketches are the developer talking
 
-Every un-started slot carries an ASCII sketch. It is a picture of the brief, drawn by the person writing the code, so you know the shape, the proportions and where the anchor is before you spend an hour. It is not art and it is never committed: `tf sketch` renders it into `sketches/`, which is gitignored, and you redraw it your way in `art/`.
+Every un-started slot carries an ASCII sketch. It is a picture of the brief, drawn by the person writing the code, so you know the shape, the proportions and where the anchor is before you spend an hour. It is not art and it is never committed: `tf sketch` renders it into `sketches/<slot>.sketch.png`, which is gitignored, and you redraw it your way in `art/`.
 
 ```
 # outline   - shadow   o mid   + light   = accent   . transparent
