@@ -54,7 +54,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**4 of 32 drawn. 12 still block the first playable build.**
+**5 of 32 drawn. 11 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
@@ -62,7 +62,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9744; | `char.player.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9745; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | 6/12 colours |
 | &#9745; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
-| &#9744; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | canvas ready, empty |
+| &#9745; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | 5/12 colours |
 | &#9744; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `prop1x1.mailtray` | **16&times;16** | 1 | 20 | **yes** | not started |
