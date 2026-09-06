@@ -17,6 +17,7 @@
     "status": "node scripts/readme-status.mjs",
     "issues": "node scripts/make-issues.mjs",
     "setup": "node scripts/setup.mjs",
-    "done": "node scripts/done.mjs"
+    "done": "node scripts/done.mjs",
+    "brief": "node scripts/brief.mjs"
   }
 }

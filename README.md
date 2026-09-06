@@ -54,7 +54,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**2 of 32 drawn. 13 still block the first playable build.**
+**3 of 32 drawn. 13 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
@@ -87,7 +87,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9744; | `prop2x2.rug` | **32&times;32** | 1 | 24 | no | not started |
 | &#9744; | `tile.anim.water` | **16&times;64** | 4 stacked | 16 | no | not started |
 | &#9745; | `tile.terrain.dirt_path` | **16&times;16** | 1 | 16 | no | 2/16 colours |
-| &#9744; | `tile.terrain.grass_a` | **16&times;16** | 1 | 16 | no | not started |
+| &#9745; | `tile.terrain.grass_a` | **16&times;16** | 1 | 16 | no | 1/16 colours |
 | &#9744; | `tile.terrain.grass_b` | **16&times;16** | 1 | 16 | no | not started |
 | &#9744; | `tile.terrain.soil_tilled` | **16&times;16** | 1 | 16 | no | not started |
 <!-- STATUS:END -->
@@ -118,6 +118,7 @@ npm run scaffold             # next slot: correctly sized empty PNG, opened for 
 npm run watch                # leave running beside your editor; every save is checked
 npm run done                 # validates, closes the issue, ticks the tracker
 npm run next                 # if you want to see the queue before committing to it
+npm run brief <slot-id>      # read any slot's brief and spec, nothing else happens
 ```
 
 No slot name needed. **`scaffold` is the front door:** it first asks *"did you finish X?"* about anything you drew that passes but is not closed yet. Say **y** and it marks it done and opens the next canvas. Say **n** and it does nothing, so you cannot accidentally move on from unfinished work. Pass a slot id to either command if you want to jump around.
