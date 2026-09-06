@@ -61,7 +61,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9744; | `char.clerk.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9744; | `char.player.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9745; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | 6/12 colours |
-| &#9744; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | not started |
+| &#9744; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | canvas ready, empty |
 | &#9744; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | not started |
