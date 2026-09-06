@@ -54,14 +54,14 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**3 of 32 drawn. 13 still block the first playable build.**
+**4 of 32 drawn. 12 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
 | &#9744; | `char.clerk.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9744; | `char.player.walk` | **64&times;64** | 4 dirs x 4 frames | 24 | **yes** | not started |
 | &#9745; | `icon.coin` | **16&times;16** | 1 | 12 | **yes** | 6/12 colours |
-| &#9744; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | canvas ready, empty |
+| &#9745; | `icon.ledger.closed` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
 | &#9744; | `icon.ledger.locked` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | not started |
 | &#9744; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | not started |
@@ -157,7 +157,8 @@ Nothing else to install. There are no dependencies.
 ### Shipping
 
 ```bash
-git add art/ && git commit -m "add the coin" && git push
+fuck add the coin       # git add -A && git commit -m "add the coin", no quotes needed
+git push                # or: fuck -p add the coin
 tf done
 ```
 

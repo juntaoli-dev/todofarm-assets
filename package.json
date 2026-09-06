@@ -22,6 +22,7 @@
     "sketch": "node scripts/sketch.mjs"
   },
   "bin": {
-    "tf": "bin/tf.mjs"
+    "tf": "bin/tf.mjs",
+    "fuck": "bin/fuck.mjs"
   }
 }
