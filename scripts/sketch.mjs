@@ -13,6 +13,7 @@ import { openFile } from '../lib/open.mjs';
 import { printSlot } from '../lib/print.mjs';
 import { compose, renderSketch } from '../lib/sketch.mjs';
 
+const { classes } = JSON.parse(readFileSync('classes.json', 'utf8'));
 const load = id => JSON.parse(readFileSync(`slots/${id}.json`, 'utf8'));
 let arg = process.argv.slice(2).find(a => !a.startsWith('--'));
 if (arg === 'all') {
