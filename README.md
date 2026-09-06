@@ -56,7 +56,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 ## What to draw
 
 <!-- STATUS:START -->
-**10 of 32 drawn. 6 still block the first playable build.**
+**11 of 32 drawn. 5 still block the first playable build.**
 
 | | slot | canvas | frames | max colours | blocks v0 | state |
 |---|---|---|---|---|---|---|
@@ -72,7 +72,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9744; | `prop2x3.bookshelf` | **32&times;48** | 1 | 24 | **yes** | not started |
 | &#9745; | `tile.floor.wood` | **16&times;16** | 1 | 16 | **yes** | 4/16 colours |
 | &#9745; | `tile.wall.plaster` | **16&times;16** | 1 | 16 | **yes** | 3/16 colours |
-| &#9744; | `ui9.panel.parchment` | **24&times;24** | 1 | 8 | **yes** | canvas ready, empty |
+| &#9745; | `ui9.panel.parchment` | **24&times;24** | 1 | 8 | **yes** | 4/8 colours |
 | &#9744; | `ui9.panel.wood` | **24&times;24** | 1 | 8 | **yes** | not started |
 | &#9744; | `crop.wheat.stages` | **16&times;64** | 4 stacked | 16 | no | not started |
 | &#9744; | `icon.letter` | **16&times;16** | 1 | 12 | no | not started |
