@@ -34,6 +34,7 @@ The queue ranking lives in `lib/queue.mjs`: first-playable (`blocks: v0`) before
 
 ## Things that look like bugs and are not
 
+- **The camera shows two sides, top and front, never a side face.** Vertical edges stay vertical. Isometric is wrong. See STANDARD.md, Camera and projection.
 - **Scaffolds are indexed PNGs with the palette baked in.** Colour type 3 with a tRNS transparent index 0 is the preferred format, not a mistake; the validator accepts 3 and 6 and rejects 2. Do not "fix" scaffold back to RGBA.
 - **A ground tile with no transparency is correct.** `tile` and `tile.anim` carry `opaque: true` in `classes.json`, which suppresses the transparency advisory.
 - **A blank scaffold in `art/` failing validation is expected.** The hook leaves it out of commits; `isUntouched()` distinguishes it from broken art.

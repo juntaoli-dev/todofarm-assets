@@ -22,6 +22,17 @@ Live tool with a working validator: the workshop app.
 | `ui9` | 24x24 | 1 | 8px corners | 8 | nine slice panels and frames |
 | `crop` | 16x64 | 4, vertical strip | bottom centre (8,15) | 16 | 4 stage growth from a ticked task |
 
+## Camera and projection
+
+Every sprite is drawn from the same imaginary camera: **in front of the object and a little above it.** This is the Stardew Valley view, and it is what makes props drawn weeks apart sit together.
+
+- **Two sides are visible: the top and the front.** Never the left or right side. If you can see three faces, it is isometric, and isometric is wrong here.
+- **Vertical edges stay vertical, horizontal edges stay horizontal.** Depth is never drawn as a diagonal.
+- **The top surface is a compressed band along the top of the sprite,** about a third of the object's height for furniture. The front face is the rest. The desk sketch shows it: the light band with the journal on it is the top; the drawers are the front.
+- **Depth reads through light, not geometry.** Key light from the upper left: top surface lightest, front face mid, a one-pixel shadow under the bottom edge and along the right.
+- **Floor tiles are pure top view. Wall tiles are pure front view**, the vertical face of the north wall, which is why plaster only tiles sideways.
+- **Characters face the camera when walking down** and are seen slightly from above, feet on the bottom row of the cell.
+
 ## Three tiers, not two
 
 The real lesson from Minecraft is not the 16x16 grid, it is the **three-tier split** it enforces. Minecraft hard-enforces a small set of machine-checkable *structural* rules, **degrades loudly rather than failing** on quality rules, and leaves *aesthetics* entirely to convention plus tooling. That is what makes its ecosystem simultaneously consistent and enormous. Full evidence in research/minecraft-art-standard.md.

@@ -68,7 +68,7 @@ Aseprite specifics, including the three settings to get right once: **[ASEPRITE.
 | &#9745; | `icon.ledger.open` | **16&times;16** | 1 | 12 | **yes** | 4/12 colours |
 | &#9745; | `icon.tomato` | **16&times;16** | 1 | 12 | **yes** | 5/12 colours |
 | &#9745; | `prop1x1.mailtray` | **16&times;16** | 1 | 20 | **yes** | 4/20 colours |
-| &#9744; | `prop2x2.desk.idle` | **32&times;32** | 1 | 24 | **yes** | not started |
+| &#9744; | `prop2x2.desk.idle` | **32&times;32** | 1 | 24 | **yes** | canvas ready, empty |
 | &#9744; | `prop2x3.bookshelf` | **32&times;48** | 1 | 24 | **yes** | not started |
 | &#9745; | `tile.floor.wood` | **16&times;16** | 1 | 16 | **yes** | 4/16 colours |
 | &#9745; | `tile.wall.plaster` | **16&times;16** | 1 | 16 | **yes** | 3/16 colours |
